@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://i1xh47ybyfws"]
+
+[ext_resource type="Script" path="res://scenes/player/buildings/tower_normal.gd" id="1_8osee"]
+[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_a8akq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ta1k"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sse3e"]
+radius = 100.0
+
+[node name="TowerNormal" type="StaticBody2D" groups=["towers"]]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8osee")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a8akq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4ta1k")
+
+[node name="RangeArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="RangeArea" type="CollisionShape2D" parent="RangeArea"]
+shape = SubResource("CircleShape2D_sse3e")
+
+[node name="AttackSpeed" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="RangeArea" to="." method="_on_range_area_body_entered"]
+[connection signal="body_exited" from="RangeArea" to="." method="_on_range_area_body_exited"]
+[connection signal="timeout" from="AttackSpeed" to="." method="_on_attack_speed_timeout"]

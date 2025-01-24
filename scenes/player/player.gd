@@ -1,0 +1,12 @@
+extends Area2D
+
+#stats
+@export var health :int = 3
+
+
+
+func _on_body_entered(body):
+	#Enemies Group collide with Player
+	if body.is_in_group("enemies"):
+		print("ouch!", body, body.damage)
+		## TODO body.queue_free(), death animation
