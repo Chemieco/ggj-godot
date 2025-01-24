@@ -14,7 +14,7 @@ modulate = Color(1, 0.141176, 1, 1)
 rotation = 1.5708
 texture = ExtResource("1_2tkax")
 
-[node name="BuyTower" type="Button" parent="Sprite2D"]
+[node name="UpgradeTower" type="Button" parent="Sprite2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,4 +28,4 @@ grow_vertical = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g3hex")
 
-[connection signal="pressed" from="Sprite2D/BuyTower" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_buy_button_pressed"]

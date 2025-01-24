@@ -4,27 +4,35 @@ extends StaticBody2D
 #onready
 @onready var range_area :CollisionShape2D = $RangeArea/RangeArea
 @onready var attack_speed :Timer = $AttackSpeed
+@onready var button = $Sprite2D/Button
+
 
 
 #stats
-@export var range :int = 100
+@export var attack_range :int = 100
 @export var bubble_damage : float = 0.5
 @export var reload_speed :float = 1.0
+@export var move_speed :int = 10
 
 
 #misc
 var targets :Array = []
 var reloaded :bool = true
+var active :bool = false
 
 
 func _ready():
-	range_area.shape.radius = range
+	modulate.a = 0.1
+	
+	range_area.shape.radius = attack_range
 	attack_speed.wait_time = reload_speed
 
 
-func _process(delta):
-	if targets.size() > 0 and reloaded == true:
-		spawn_bubble_normal()
+func _process(_delta):
+	if active == true: 
+		if targets.size() > 0 and reloaded == true:
+			spawn_bubble_normal()
+
 
 
 func _on_range_area_body_entered(body):
@@ -47,3 +55,10 @@ func spawn_bubble_normal():
 
 func _on_attack_speed_timeout():
 	reloaded = true
+
+
+func _on_button_pressed():
+	#TODO if cost < money:
+	modulate.a = 1.0
+	active = true
+	button.disabled = true

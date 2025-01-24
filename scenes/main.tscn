@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
 [ext_resource type="PackedScene" uid="uid://bbjqrn8v5xghl" path="res://scenes/player/player.tscn" id="1_v6m5q"]
 [ext_resource type="PackedScene" uid="uid://cd6bv01vdrygq" path="res://scenes/enemies/enemy.tscn" id="2_dwpmd"]
 [ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building_tower_normal.tscn" id="3_gbodl"]
-[ext_resource type="PackedScene" uid="uid://bfwr5k0i8peh7" path="res://scenes/player/buildings/bubble_normal.tscn" id="4_7f6y5"]
 
 [node name="Main" type="Node2D"]
 
@@ -13,13 +12,25 @@
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="BuildingTowerNormal" parent="Player" instance=ExtResource("3_gbodl")]
-position = Vector2(-52, 82)
+position = Vector2(-34, 41)
 
 [node name="TowerNormal" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-237, -4)
+position = Vector2(-230, 1)
 
-[node name="BubbleNormal" parent="Player/TowerNormal" instance=ExtResource("4_7f6y5")]
-visible = false
+[node name="TowerNormal2" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(-220, 160)
+
+[node name="TowerNormal3" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(-220, -160)
+
+[node name="TowerNormal4" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(220, 160)
+
+[node name="TowerNormal5" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(230, 0)
+
+[node name="TowerNormal6" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(220, -160)
 
 [node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
 position = Vector2(-432, 1)

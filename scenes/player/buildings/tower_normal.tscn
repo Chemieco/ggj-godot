@@ -17,6 +17,17 @@ script = ExtResource("1_8osee")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_a8akq")
 
+[node name="Button" type="Button" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.5
+offset_top = -16.5
+offset_right = -16.5
+offset_bottom = -16.5
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4ta1k")
 
@@ -30,6 +41,7 @@ shape = SubResource("CircleShape2D_sse3e")
 [node name="AttackSpeed" type="Timer" parent="."]
 autostart = true
 
+[connection signal="pressed" from="Sprite2D/Button" to="." method="_on_button_pressed"]
 [connection signal="body_entered" from="RangeArea" to="." method="_on_range_area_body_entered"]
 [connection signal="body_exited" from="RangeArea" to="." method="_on_range_area_body_exited"]
 [connection signal="timeout" from="AttackSpeed" to="." method="_on_attack_speed_timeout"]

@@ -1,7 +1,9 @@
 extends Area2D
 
+
 #stats
 @export var health :int = 3
+@export var tower_rotation :float = 0.3
 
 
 
