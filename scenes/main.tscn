@@ -1,5 +1,21 @@
-[gd_scene format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dmpdwy7k7rrdo"]
+
+[ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower.tscn" id="1_fv00a"]
+[ext_resource type="PackedScene" uid="uid://bbjqrn8v5xghl" path="res://scenes/player/player.tscn" id="1_v6m5q"]
+[ext_resource type="PackedScene" uid="uid://cd6bv01vdrygq" path="res://scenes/enemies/enemy.tscn" id="2_dwpmd"]
+[ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building.tscn" id="3_gbodl"]
 
 [node name="Main" type="Node2D"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("1_v6m5q")]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Building" parent="Player" instance=ExtResource("3_gbodl")]
+position = Vector2(-52, 82)
+
+[node name="Tower" parent="Player" instance=ExtResource("1_fv00a")]
+position = Vector2(-237, -4)
+
+[node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
+position = Vector2(-360, 64)
