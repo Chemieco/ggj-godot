@@ -1,7 +1,6 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://uhlbo1vvm3so"]
 
 [resource]
-bus/0/send = &"Building02"
 bus/1/name = &"Building01"
 bus/1/solo = false
 bus/1/mute = false
@@ -26,3 +25,9 @@ bus/4/mute = false
 bus/4/bypass_fx = false
 bus/4/volume_db = 0.0
 bus/4/send = &"Master"
+bus/5/name = &"Final"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Master"

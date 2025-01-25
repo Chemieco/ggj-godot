@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5ej26fcwiwd8"]
+[gd_scene load_steps=4 format=3 uid="uid://5ej26fcwiwd8"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_slow.gd" id="1_8kkx5"]
 [ext_resource type="Texture2D" uid="uid://c0tnosydmumx3" path="res://scenes/player/buildings/64x32.png" id="2_sf3jm"]
+[ext_resource type="AudioStream" uid="uid://dslpsh32pekfi" path="res://assets/sounds/Loop-Lied-Trumpet.ogg" id="3_iwb2e"]
 
 [node name="BuildingTowerSlow" type="StaticBody2D" groups=["player"]]
 script = ExtResource("1_8kkx5")
@@ -12,5 +13,12 @@ texture = ExtResource("2_sf3jm")
 [node name="UpgradeTower" type="Button" parent="Sprite2D"]
 offset_right = 8.0
 offset_bottom = 8.0
+
+[node name="TrumpetLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_iwb2e")
+volume_db = -20.0
+autoplay = true
+bus = &"Building03"
+parameters/looping = true
 
 [connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]

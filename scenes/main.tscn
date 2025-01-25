@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=21 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://dyqbl6sgdh4k" path="res://assets/background/bg3.png" id="12_ivqqv"]
 [ext_resource type="Texture2D" uid="uid://bryvtaqwq307y" path="res://assets/background/bg4.png" id="13_6acjq"]
 [ext_resource type="Texture2D" uid="uid://ce717g88b26pr" path="res://assets/background/bg51.png" id="14_oe4ge"]
-[ext_resource type="PackedScene" uid="uid://bagkegph3wm6r" path="res://scenes/spawn_tower_button.tscn" id="15_857hr"]
+[ext_resource type="PackedScene" path="res://scenes/spawn_tower_button.tscn" id="15_857hr"]
 [ext_resource type="Texture2D" uid="uid://d1ke2xj1sbajw" path="res://assets/background/bg52.png" id="15_w07wm"]
+[ext_resource type="AudioStream" uid="uid://bfulew0aypdyq" path="res://assets/sounds/Loop-Lied-Base.ogg" id="17_qkuot"]
+[ext_resource type="AudioStream" uid="uid://cowhjih75apa5" path="res://assets/sounds/Loop-Lied-Finalbonus.ogg" id="18_yc7f7"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -205,4 +207,20 @@ repeat_times = 4
 texture_filter = 1
 texture = ExtResource("15_w07wm")
 
+[node name="BaseLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_qkuot")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="FinalLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_yc7f7")
+volume_db = -25.0
+autoplay = true
+bus = &"Final"
+parameters/looping = true
+
+[connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
+[connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]
+[connection signal="building_spawned" from="Player/BuildingTowerSlow" to="." method="_on_building_tower_slow_building_spawned"]
 [connection signal="timeout" from="GameSpeed" to="." method="_on_game_speed_timeout"]

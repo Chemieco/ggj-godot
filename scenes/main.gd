@@ -16,12 +16,14 @@ var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
 var next_enemy_type :Array = ["spawn_enemy_normal"]
 var max_time_scale :float = 3.0
-
-
+var buildingcount: int = 0
 
 func _ready():
 	randomize()
 	spawn_path = [spawn_path_right, spawn_path_left]
+	#final music off
+	buildingcount = 0
+	AudioServer.set_bus_mute(5, true)
 
 
 func _physics_process(delta):
@@ -50,3 +52,19 @@ func _on_game_speed_timeout():
 		Engine.time_scale *= 1.1
 	else:
 		Engine.time_scale = max_time_scale
+
+#final music on
+func _on_building_tower_normal_building_spawned():
+	buildingcount += 1
+	if buildingcount == 3:
+		AudioServer.set_bus_mute(5, false)
+
+func _on_building_tower_heal_building_spawned():
+	buildingcount += 1
+	if buildingcount == 3:
+		AudioServer.set_bus_mute(5, false)
+
+func _on_building_tower_slow_building_spawned():
+	buildingcount += 1
+	if buildingcount == 3:
+		AudioServer.set_bus_mute(5, false)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://naxi80a8lev5"]
+[gd_scene load_steps=7 format=3 uid="uid://naxi80a8lev5"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_heal.gd" id="1_u7i2t"]
 [ext_resource type="Texture2D" uid="uid://4cug6el4c6ot" path="res://assets/Lolli/heal_house_animation.png" id="2_kwecg"]
+[ext_resource type="AudioStream" uid="uid://cu2evljt1pdld" path="res://assets/sounds/Loop-Lied-Streicher.ogg" id="3_ewhqx"]
 
 [sub_resource type="Animation" id="Animation_del4d"]
 length = 0.001
@@ -74,6 +75,13 @@ libraries = {
 }
 autoplay = "idle"
 speed_scale = 0.3
+
+[node name="ViolinLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ewhqx")
+volume_db = -20.0
+autoplay = true
+bus = &"Building02"
+parameters/looping = true
 
 [connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
 [connection signal="timeout" from="HealTimer" to="." method="_on_heal_timer_timeout"]

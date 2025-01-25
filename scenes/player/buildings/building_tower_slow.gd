@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+signal building_spawned
+
 #onready
 @onready var upgrade_tower = $Sprite2D/UpgradeTower
 @onready var player = $".."
@@ -16,6 +18,8 @@ extends StaticBody2D
 
 func _ready():
 	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
+	#mute tower music
+	AudioServer.set_bus_mute(3, true)
 
 
 func _process(_delta):
@@ -27,6 +31,10 @@ func _on_upgrade_tower_pressed():
 	tower_lvl += 1
 	upgrade_cost = tower_lvl * upgrade_cost
 	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
+	#music on
+	if AudioServer.is_bus_mute(3):
+		AudioServer.set_bus_mute(3, false)
+		building_spawned.emit()
 
 
 func check_money():

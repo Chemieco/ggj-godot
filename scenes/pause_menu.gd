@@ -6,6 +6,10 @@ func _ready():
 	hide()
 	#set default volume at start
 	AudioServer.set_bus_volume_db(0,DEFAULT_VOLUME)
+	AudioServer.set_bus_volume_db(1,DEFAULT_VOLUME)
+	AudioServer.set_bus_volume_db(2,DEFAULT_VOLUME)
+	AudioServer.set_bus_volume_db(3,DEFAULT_VOLUME)
+	AudioServer.set_bus_volume_db(5,DEFAULT_VOLUME)
 	%VolumeSlider.value = DEFAULT_VOLUME
 
 #toggle pause
@@ -19,6 +23,10 @@ func _unhandled_key_input(event: InputEvent):
 #set volume
 func _on_volume_slider_value_changed(value):
 	AudioServer.set_bus_volume_db(0,value)
+	AudioServer.set_bus_volume_db(1,value)
+	AudioServer.set_bus_volume_db(2,value)
+	AudioServer.set_bus_volume_db(3,value)
+	AudioServer.set_bus_volume_db(5,value)
 	if not %BgMusic.playing:
 		%BgMusic.play()
 
