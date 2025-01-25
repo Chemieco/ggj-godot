@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbjqrn8v5xghl"]
+[gd_scene load_steps=6 format=3 uid="uid://bbjqrn8v5xghl"]
 
-[ext_resource type="Texture2D" uid="uid://bi0rwpmj2nlpj" path="res://scenes/player/400x400.png" id="1_4hp85"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a3iho"]
+[ext_resource type="Texture2D" uid="uid://d03jowo173pox" path="res://assets/Lolli/insel.png" id="2_krhoi"]
+[ext_resource type="Texture2D" uid="uid://dsjq45b37g2cc" path="res://assets/Lolli/bubble.png" id="3_bib46"]
 [ext_resource type="Script" path="res://scenes/player/sprite_2d.gd" id="3_elo52"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5s0rp"]
@@ -12,7 +13,11 @@ collision_mask = 2
 script = ExtResource("1_a3iho")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_4hp85")
+texture = ExtResource("2_krhoi")
+
+[node name="Bubble" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0.764706)
+texture = ExtResource("3_bib46")
 script = ExtResource("3_elo52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

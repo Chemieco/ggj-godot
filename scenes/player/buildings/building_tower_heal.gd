@@ -16,6 +16,7 @@ extends StaticBody2D
 
 var tower_heal :float 
 var tower_speed :float
+var max_level :bool = false
 
 
 #misc
@@ -43,7 +44,7 @@ func check_money():
 	if player.money < upgrade_cost:
 		upgrade_tower.disabled = true
 		modulate.a = 0.1
-	elif player.money >= upgrade_cost:
+	elif player.money >= upgrade_cost and max_level == false:
 		upgrade_tower.disabled = false
 		modulate.a = 1
 
@@ -56,8 +57,12 @@ func heal():
 func upgrade_stats():
 	tower_heal = tower_heal_base + (tower_lvl * upgrade_mod)
 	
-	tower_speed = tower_speed_base - (tower_lvl * upgrade_mod * upgrade_mod)
-	heal_timer.wait_time = tower_speed
+	if tower_speed >= 0.15:
+		tower_speed = tower_speed_base - (tower_lvl * upgrade_mod * upgrade_mod)
+		heal_timer.wait_time = tower_speed
+	elif tower_speed < 0.15:
+		max_level = true
+		upgrade_tower.disabled = true
 
 
 func _on_heal_timer_timeout():

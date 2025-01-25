@@ -45,8 +45,11 @@ func get_damage(x):
 
 
 func get_slowed(b_dmg, b_slow_time):
+	if b_slow_time <= 0.125:
+		b_slow_time = 0.125
 	speed = base_speed * b_dmg
 	slow_timer.wait_time = b_slow_time
+	print(b_slow_time)
 	slow_timer.start()
 	
 

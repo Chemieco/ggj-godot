@@ -96,11 +96,11 @@ func upgrade_stats():
 	attack_range = attack_range_base + (building_tower_slow.tower_lvl * upgrade_mod)
 	range_area.shape.radius = attack_range
 	
-	if bubble_damage >= 0.1:
+	if bubble_damage >= 0.15 or bubble_slow_time >= 0.15:
 		bubble_damage = bubble_damage_base - (building_tower_slow.tower_lvl * upgrade_mod * upgrade_mod)
 		bubble_slow_time = bubble_slow_time_base - (building_tower_slow.tower_lvl * upgrade_mod)
 		print(bubble_damage)
-	elif bubble_slow_time < 0.1:
+	elif bubble_damage < 0.15 or bubble_slow_time < 0.15:
 		max_level = true
 		building_tower_slow.upgrade_tower.disabled = true
 	
