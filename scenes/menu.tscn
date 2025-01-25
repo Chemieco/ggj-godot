@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://crm1vxtglxw7x"]
+[gd_scene load_steps=13 format=3 uid="uid://crm1vxtglxw7x"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_g1ywt"]
+[ext_resource type="PackedScene" uid="uid://ct2fnuxswex2h" path="res://scenes/background.tscn" id="2_yn1fd"]
+[ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_16v1p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0b8f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ve5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lstkh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vvaa2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ka6f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c3qtn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jjh3j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h3oqi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1u5mk"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -12,6 +32,7 @@ grow_vertical = 2
 script = ExtResource("1_g1ywt")
 
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,6 +40,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.227451, 0.447059, 0.768627, 1)
+
+[node name="background" parent="." instance=ExtResource("2_yn1fd")]
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 1
@@ -40,23 +63,45 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -173.0
+offset_top = 90.0
+offset_right = 169.0
+offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Start" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("3_16v1p")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_a0b8f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ve5t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
 text = "Start"
 
 [node name="Credit" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("3_16v1p")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_vvaa2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ka6f")
+theme_override_styles/normal = SubResource("StyleBoxTexture_c3qtn")
 text = "Credits"
 
 [node name="Quit" type="Button" parent="Buttons"]
 layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("3_16v1p")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_jjh3j")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h3oqi")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1u5mk")
 text = "Quit"
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
