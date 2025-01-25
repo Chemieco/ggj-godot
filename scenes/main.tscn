@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=12 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cd6bv01vdrygq" path="res://scenes/enemies/enemy.tscn" id="2_dwpmd"]
 [ext_resource type="Script" path="res://scenes/debug.gd" id="3_ex56j"]
 [ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building_tower_normal.tscn" id="3_gbodl"]
+[ext_resource type="PackedScene" uid="uid://5ej26fcwiwd8" path="res://scenes/player/buildings/building_tower_slow.tscn" id="6_gra6e"]
 [ext_resource type="PackedScene" uid="uid://naxi80a8lev5" path="res://scenes/player/buildings/building_tower_heal.tscn" id="7_mvxj5"]
+[ext_resource type="PackedScene" uid="uid://cxjb0a1p5aobb" path="res://scenes/player/buildings/tower_slow.tscn" id="8_51my1"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -41,6 +43,9 @@ position = Vector2(58, 46)
 [node name="BuildingTowerNormal" parent="Player" instance=ExtResource("3_gbodl")]
 position = Vector2(-34, 41)
 
+[node name="BuildingTowerSlow" parent="Player" instance=ExtResource("6_gra6e")]
+position = Vector2(12, 64)
+
 [node name="TowerNormal" parent="Player" instance=ExtResource("1_fv00a")]
 position = Vector2(-230, 1.0007)
 
@@ -58,6 +63,18 @@ position = Vector2(230, -0.00094223)
 
 [node name="TowerNormal6" parent="Player" instance=ExtResource("1_fv00a")]
 position = Vector2(219.999, -160.001)
+
+[node name="TowerSlow" parent="Player" instance=ExtResource("8_51my1")]
+position = Vector2(-229, -76)
+
+[node name="TowerSlow2" parent="Player" instance=ExtResource("8_51my1")]
+position = Vector2(-230, 86)
+
+[node name="TowerSlow3" parent="Player" instance=ExtResource("8_51my1")]
+position = Vector2(231, 80)
+
+[node name="TowerSlow4" parent="Player" instance=ExtResource("8_51my1")]
+position = Vector2(225, -82)
 
 [node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
 position = Vector2(-432, 1)

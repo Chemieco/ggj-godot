@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://df3r171edtfbw"]
+
+[ext_resource type="Script" path="res://scenes/player/buildings/bubble_slow.gd" id="1_g5usf"]
+[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_tuwma"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmolm"]
+size = Vector2(32, 32)
+
+[node name="BubbleSlow" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_g5usf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tuwma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cmolm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.1, 2.2)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

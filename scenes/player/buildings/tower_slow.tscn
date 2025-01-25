@@ -1,36 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://i1xh47ybyfws"]
+[gd_scene load_steps=5 format=3 uid="uid://cxjb0a1p5aobb"]
 
-[ext_resource type="Script" path="res://scenes/player/buildings/tower_normal.gd" id="1_8osee"]
-[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_a8akq"]
+[ext_resource type="Script" path="res://scenes/player/buildings/tower_slow.gd" id="1_r5xkp"]
+[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="2_0lja1"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ta1k"]
-size = Vector2(32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qteo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sse3e"]
 radius = 100.0
 
-[node name="TowerNormal" type="StaticBody2D" groups=["towers"]]
+[node name="TowerSlow" type="StaticBody2D" groups=["towers"]]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_8osee")
+script = ExtResource("1_r5xkp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_a8akq")
+modulate = Color(0.297776, 0.857397, 0.486322, 1)
+texture = ExtResource("2_0lja1")
 
 [node name="Button" type="CheckButton" parent="Sprite2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -22.0
+offset_left = -16.5
 offset_top = -16.5
-offset_right = -11.0
+offset_right = -16.5
 offset_bottom = -16.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("RectangleShape2D_4ta1k")
+shape = SubResource("RectangleShape2D_qteo6")
 
 [node name="RangeArea" type="Area2D" parent="."]
 collision_layer = 4

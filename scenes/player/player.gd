@@ -8,7 +8,7 @@ extends Area2D
 @export var money :int = 20
 
 
-func _process(delta):
+func _process(_delta):
 	update_health()
 
 

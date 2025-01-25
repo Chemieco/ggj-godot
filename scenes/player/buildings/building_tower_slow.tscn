@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ej26fcwiwd8"]
+
+[ext_resource type="Script" path="res://scenes/player/buildings/building_tower_slow.gd" id="1_8kkx5"]
+[ext_resource type="Texture2D" uid="uid://c0tnosydmumx3" path="res://scenes/player/buildings/64x32.png" id="2_sf3jm"]
+
+[node name="BuildingTowerSlow" type="StaticBody2D" groups=["player"]]
+script = ExtResource("1_8kkx5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.318528, 0.743835, 1, 1)
+texture = ExtResource("2_sf3jm")
+
+[node name="UpgradeTower" type="Button" parent="Sprite2D"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
