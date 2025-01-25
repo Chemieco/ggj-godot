@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=19 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dyqbl6sgdh4k" path="res://assets/background/bg3.png" id="12_ivqqv"]
 [ext_resource type="Texture2D" uid="uid://bryvtaqwq307y" path="res://assets/background/bg4.png" id="13_6acjq"]
 [ext_resource type="Texture2D" uid="uid://ce717g88b26pr" path="res://assets/background/bg51.png" id="14_oe4ge"]
+[ext_resource type="PackedScene" uid="uid://bagkegph3wm6r" path="res://scenes/spawn_tower_button.tscn" id="15_857hr"]
 [ext_resource type="Texture2D" uid="uid://d1ke2xj1sbajw" path="res://assets/background/bg52.png" id="15_w07wm"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
@@ -110,35 +111,72 @@ position = Vector2(-34, 41)
 [node name="BuildingTowerSlow" parent="Player" instance=ExtResource("6_gra6e")]
 position = Vector2(12, 64)
 
-[node name="TowerNormal" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-230, 1.0007)
-
-[node name="TowerNormal2" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-220, 160.001)
-
-[node name="TowerNormal3" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-220.001, -159.999)
-
-[node name="TowerNormal4" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(220, 159.999)
-
-[node name="TowerNormal5" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(230, -0.00094223)
-
-[node name="TowerNormal6" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(219.999, -160.001)
-
 [node name="TowerSlow" parent="Player" instance=ExtResource("8_51my1")]
-position = Vector2(-229, -76)
+visible = false
+position = Vector2(35, -1643)
 
-[node name="TowerSlow2" parent="Player" instance=ExtResource("8_51my1")]
-position = Vector2(-230, 86)
+[node name="TowerNormal" parent="Player" instance=ExtResource("1_fv00a")]
+visible = false
+position = Vector2(-129, -1809)
 
-[node name="TowerSlow3" parent="Player" instance=ExtResource("8_51my1")]
-position = Vector2(231, 80)
+[node name="SpawnTowerButton" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = -261.0
+offset_right = -229.0
+popup/item_2/disabled = true
 
-[node name="TowerSlow4" parent="Player" instance=ExtResource("8_51my1")]
-position = Vector2(225, -82)
+[node name="SpawnTowerButton2" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = -242.0
+offset_top = 96.0
+offset_right = -210.0
+offset_bottom = 128.0
+
+[node name="SpawnTowerButton3" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = -157.0
+offset_top = 187.0
+offset_right = -125.0
+offset_bottom = 219.0
+
+[node name="SpawnTowerButton4" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = -243.0
+offset_top = -150.0
+offset_right = -211.0
+offset_bottom = -118.0
+
+[node name="SpawnTowerButton5" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = -147.0
+offset_top = -230.0
+offset_right = -115.0
+offset_bottom = -198.0
+
+[node name="SpawnTowerButton6" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = 116.0
+offset_top = 190.0
+offset_right = 148.0
+offset_bottom = 222.0
+
+[node name="SpawnTowerButton7" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = 204.0
+offset_top = 115.0
+offset_right = 236.0
+offset_bottom = 147.0
+
+[node name="SpawnTowerButton8" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = 244.0
+offset_top = -13.0
+offset_right = 276.0
+offset_bottom = 19.0
+
+[node name="SpawnTowerButton9" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = 217.0
+offset_top = -151.0
+offset_right = 249.0
+offset_bottom = -119.0
+
+[node name="SpawnTowerButton10" parent="Player" instance=ExtResource("15_857hr")]
+offset_left = 124.0
+offset_top = -244.0
+offset_right = 156.0
+offset_bottom = -212.0
 
 [node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
 position = Vector2(-432, 1)
@@ -163,6 +201,5 @@ current = true
 [node name="GameSpeed" type="Timer" parent="."]
 process_callback = 0
 wait_time = 10.0
-autostart = true
 
 [connection signal="timeout" from="GameSpeed" to="." method="_on_game_speed_timeout"]

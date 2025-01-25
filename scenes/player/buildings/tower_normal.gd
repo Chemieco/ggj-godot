@@ -4,7 +4,6 @@ extends StaticBody2D
 #onready
 @onready var range_area :CollisionShape2D = $RangeArea/RangeArea
 @onready var attack_speed :Timer = $AttackSpeed
-@onready var button = $Sprite2D/Button
 @onready var player = $".."
 @onready var building_tower_normal = $"../BuildingTowerNormal"
 
@@ -28,23 +27,17 @@ extends StaticBody2D
 #misc
 var targets :Array = []
 var reloaded :bool = true
-var active :bool = false
 
-
-func _ready():
-	modulate.a = 0.1
 
 
 func _process(_delta):
 	upgrade_stats()
-	check_money()
 	attack()
 
 
 func attack():
-	if active == true: 
-		if targets.size() > 0 and reloaded == true:
-			spawn_bubble_normal()
+	if targets.size() > 0 and reloaded == true:
+		spawn_bubble_normal()
 
 
 func _on_range_area_body_entered(body):
@@ -69,24 +62,6 @@ func _on_attack_speed_timeout():
 	reloaded = true
 
 
-func check_money():
-	if button.button_pressed == false and player.money < tower_cost:
-		button.disabled = true
-	elif button.button_pressed == false and player.money >= tower_cost:
-		button.disabled = false
-
-
-func _on_button_toggled(_toggled_on):
-	#TODO if cost < money:
-	if button.button_pressed == true:
-		modulate.a = 1.0
-		active = true
-		player.money -= tower_cost
-	elif button.button_pressed == false:
-		modulate.a = 0.1
-		active = false
-		player.money += tower_cost
-
 
 func upgrade_stats():
 	attack_range = attack_range_base + (building_tower_normal.tower_lvl * upgrade_mod)
@@ -97,4 +72,4 @@ func upgrade_stats():
 	reload_speed = reload_speed_base - (building_tower_normal.tower_lvl * upgrade_mod * upgrade_mod)
 	attack_speed.wait_time = reload_speed
 	
-	tower_cost = tower_cost_base + (building_tower_normal.tower_lvl * upgrade_mod)
+	#tower_cost = tower_cost_base + (building_tower_normal.tower_lvl * upgrade_mod)

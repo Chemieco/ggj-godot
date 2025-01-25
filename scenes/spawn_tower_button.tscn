@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bagkegph3wm6r"]
+
+[ext_resource type="Script" path="res://scenes/spawn_tower_button.gd" id="1_2etpp"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_dwmw6"]
+
+[node name="SpawnTowerButton" type="OptionButton"]
+offset_left = -259.0
+offset_top = -15.0
+offset_right = -227.0
+offset_bottom = 17.0
+theme_override_icons/arrow = SubResource("ImageTexture_dwmw6")
+fit_to_longest_item = false
+item_count = 3
+popup/item_0/text = "N"
+popup/item_1/text = "S"
+popup/item_1/id = 1
+popup/item_2/text = "$"
+popup/item_2/id = 2
+script = ExtResource("1_2etpp")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

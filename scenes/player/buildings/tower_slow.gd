@@ -4,7 +4,6 @@ extends StaticBody2D
 #onready
 @onready var range_area :CollisionShape2D = $RangeArea/RangeArea
 @onready var attack_speed :Timer = $AttackSpeed
-@onready var button = $Sprite2D/Button
 @onready var player = $".."
 @onready var building_tower_slow = $"../BuildingTowerSlow"
 
@@ -31,24 +30,18 @@ extends StaticBody2D
 #misc
 var targets :Array = []
 var reloaded :bool = true
-var active :bool = false
 var max_level :bool = false
 
-
-func _ready():
-	modulate.a = 0.1
 
 
 func _process(_delta):
 	upgrade_stats()
-	check_money()
 	attack()
 
 
 func attack():
-	if active == true: 
-		if targets.size() > 0 and reloaded == true:
-			spawn_bubble_slow()
+	if targets.size() > 0 and reloaded == true:
+		spawn_bubble_slow()
 
 
 func _on_range_area_body_entered(body):
@@ -73,25 +66,6 @@ func _on_attack_speed_timeout():
 	reloaded = true
 
 
-func check_money():
-	if button.button_pressed == false and player.money < tower_cost:
-		button.disabled = true
-	elif button.button_pressed == false and player.money >= tower_cost and max_level == false:
-		button.disabled = false
-
-
-func _on_button_toggled(_toggled_on):
-	#TODO if cost < money:
-	if button.button_pressed == true:
-		modulate.a = 1.0
-		active = true
-		player.money -= tower_cost
-	elif button.button_pressed == false:
-		modulate.a = 0.1
-		active = false
-		player.money += tower_cost
-
-
 func upgrade_stats():
 	attack_range = attack_range_base + (building_tower_slow.tower_lvl * upgrade_mod)
 	range_area.shape.radius = attack_range
@@ -99,7 +73,6 @@ func upgrade_stats():
 	if bubble_damage >= 0.15 or bubble_slow_time >= 0.15:
 		bubble_damage = bubble_damage_base - (building_tower_slow.tower_lvl * upgrade_mod * upgrade_mod)
 		bubble_slow_time = bubble_slow_time_base - (building_tower_slow.tower_lvl * upgrade_mod)
-		print(bubble_damage)
 	elif bubble_damage < 0.15 or bubble_slow_time < 0.15:
 		max_level = true
 		building_tower_slow.upgrade_tower.disabled = true
@@ -107,4 +80,4 @@ func upgrade_stats():
 	reload_speed = reload_speed_base - (building_tower_slow.tower_lvl * upgrade_mod * upgrade_mod)
 	attack_speed.wait_time = reload_speed
 	
-	tower_cost = tower_cost_base + (building_tower_slow.tower_lvl * upgrade_mod)
+	#tower_cost = tower_cost_base + (building_tower_slow.tower_lvl * upgrade_mod)

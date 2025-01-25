@@ -18,6 +18,8 @@ texture = ExtResource("2_krhoi")
 [node name="Bubble" type="Sprite2D" parent="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0.764706)
 texture = ExtResource("3_bib46")
+hframes = 5
+frame = 4
 script = ExtResource("3_elo52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
