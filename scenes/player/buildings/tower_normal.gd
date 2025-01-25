@@ -57,8 +57,12 @@ func _on_attack_speed_timeout():
 	reloaded = true
 
 
-func _on_button_pressed():
+
+func _on_button_toggled(_toggled_on):
 	#TODO if cost < money:
-	modulate.a = 1.0
-	active = true
-	button.disabled = true
+	if button.button_pressed == true:
+		modulate.a = 1.0
+		active = true
+	elif button.button_pressed == false:
+		modulate.a = 0.1
+		active = false
