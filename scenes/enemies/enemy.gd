@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 
 
+
 #stats
 
 @export var base_speed :float = 50
@@ -20,10 +21,13 @@ extends CharacterBody2D
 var target :Vector2
 var direction :Vector2
 var slowed :bool = false
+var enemy_sprite :Array = ["res://assets/Nautilus_color_outline.png", "res://assets/Pufferfish.png", "res://assets/Schwertfish.png"]
 
 
 func _ready():
-	
+	randomize()
+	var next_sprite :String = enemy_sprite.pick_random()
+	sprite.texture=ResourceLoader.load(next_sprite)
 	target = player.global_position
 
 
@@ -57,3 +61,5 @@ func move(delta):
 		sprite.flip_h = false
 	elif player.global_position.x - global_position.x <= 0:
 		sprite.flip_h = true
+	else:
+		queue_free()
