@@ -23,6 +23,7 @@ point_count = 2
 script = ExtResource("1_44edq")
 
 [node name="Player" parent="." instance=ExtResource("1_v6m5q")]
+money = 150
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -37,22 +38,22 @@ script = ExtResource("3_ex56j")
 position = Vector2(-34, 41)
 
 [node name="TowerNormal" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-230, 1)
+position = Vector2(-230, 1.0007)
 
 [node name="TowerNormal2" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-220, 160)
+position = Vector2(-220, 160.001)
 
 [node name="TowerNormal3" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(-220, -160)
+position = Vector2(-220.001, -159.999)
 
 [node name="TowerNormal4" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(220, 160)
+position = Vector2(220, 159.999)
 
 [node name="TowerNormal5" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(230, 0)
+position = Vector2(230, -0.00094223)
 
 [node name="TowerNormal6" parent="Player" instance=ExtResource("1_fv00a")]
-position = Vector2(220, -160)
+position = Vector2(219.999, -160.001)
 
 [node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
 position = Vector2(-432, 1)

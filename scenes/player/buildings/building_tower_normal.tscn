@@ -4,14 +4,16 @@
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_normal.gd" id="1_63q1c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3hex"]
-size = Vector2(32, 64)
+size = Vector2(34, 66)
 
 [node name="BuildingTowerNormal" type="StaticBody2D" groups=["player"]]
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_63q1c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.141176, 1, 1)
-rotation = 1.5708
 texture = ExtResource("1_2tkax")
 
 [node name="UpgradeTower" type="Button" parent="Sprite2D"]
@@ -24,8 +26,10 @@ offset_right = -32.5
 offset_bottom = -16.5
 grow_horizontal = 2
 grow_vertical = 2
+text = "0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_g3hex")
 
-[connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="Sprite2D/UpgradeTower" to="." method="_on_upgrade_tower_pressed"]
