@@ -5,11 +5,17 @@ extends Node2D
 @onready var spawn_path_right :PathFollow2D = $PathRight/SpawnPathRight
 @onready var spawn_path_left :PathFollow2D = $PathLeft/SpawnPathLeft
 
+
+#stats
+
+
+
 #misc
 var spawn_path :Array
 var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
 var next_enemy_type :Array = ["spawn_enemy_normal"]
+
 
 
 func _ready():

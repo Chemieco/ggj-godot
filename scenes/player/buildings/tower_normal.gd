@@ -5,6 +5,8 @@ extends StaticBody2D
 @onready var range_area :CollisionShape2D = $RangeArea/RangeArea
 @onready var attack_speed :Timer = $AttackSpeed
 @onready var button = $Sprite2D/Button
+@onready var player = $".."
+
 
 
 
@@ -13,6 +15,7 @@ extends StaticBody2D
 @export var bubble_damage : float = 0.5
 @export var reload_speed :float = 1.0
 @export var move_speed :int = 10
+@export var tower_cost :int = 10
 
 
 #misc
@@ -29,6 +32,8 @@ func _ready():
 
 
 func _process(_delta):
+	check_money()
+	
 	if active == true: 
 		if targets.size() > 0 and reloaded == true:
 			spawn_bubble_normal()
@@ -57,12 +62,20 @@ func _on_attack_speed_timeout():
 	reloaded = true
 
 
+func check_money():
+	if button.button_pressed == false and player.money < tower_cost:
+		button.disabled = true
+	elif button.button_pressed == false and player.money >= tower_cost:
+		button.disabled = false
+
 
 func _on_button_toggled(_toggled_on):
 	#TODO if cost < money:
 	if button.button_pressed == true:
 		modulate.a = 1.0
 		active = true
+		player.money -= tower_cost
 	elif button.button_pressed == false:
 		modulate.a = 0.1
 		active = false
+		player.money += tower_cost

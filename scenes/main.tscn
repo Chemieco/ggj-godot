@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=9 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
 [ext_resource type="PackedScene" uid="uid://bbjqrn8v5xghl" path="res://scenes/player/player.tscn" id="1_v6m5q"]
 [ext_resource type="PackedScene" uid="uid://cd6bv01vdrygq" path="res://scenes/enemies/enemy.tscn" id="2_dwpmd"]
+[ext_resource type="Script" path="res://scenes/debug.gd" id="3_ex56j"]
 [ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building_tower_normal.tscn" id="3_gbodl"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
@@ -24,6 +25,13 @@ script = ExtResource("1_44edq")
 [node name="Player" parent="." instance=ExtResource("1_v6m5q")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Debug" type="Label" parent="Player/Camera2D"]
+offset_left = -447.0
+offset_top = -246.0
+offset_right = -247.0
+offset_bottom = -223.0
+script = ExtResource("3_ex56j")
 
 [node name="BuildingTowerNormal" parent="Player" instance=ExtResource("3_gbodl")]
 position = Vector2(-34, 41)

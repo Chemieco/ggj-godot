@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var speed :float = 50
 @export var damage :float = 1.0
 @export var health :float = 1.0
+@export var loot :int = 5
 
 
 #misc
@@ -27,6 +28,7 @@ func get_damage(x):
 	health -= x
 	
 	if health <= 0:
+		player.money += loot
 		queue_free()
 		#TODO death animation 
 
