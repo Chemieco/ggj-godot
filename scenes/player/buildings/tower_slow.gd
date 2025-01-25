@@ -32,6 +32,7 @@ extends StaticBody2D
 var targets :Array = []
 var reloaded :bool = true
 var active :bool = false
+var max_level :bool = false
 
 
 func _ready():
@@ -75,7 +76,7 @@ func _on_attack_speed_timeout():
 func check_money():
 	if button.button_pressed == false and player.money < tower_cost:
 		button.disabled = true
-	elif button.button_pressed == false and player.money >= tower_cost:
+	elif button.button_pressed == false and player.money >= tower_cost and max_level == false:
 		button.disabled = false
 
 
@@ -95,8 +96,13 @@ func upgrade_stats():
 	attack_range = attack_range_base + (building_tower_slow.tower_lvl * upgrade_mod)
 	range_area.shape.radius = attack_range
 	
-	bubble_damage = bubble_damage_base - (building_tower_slow.tower_lvl * upgrade_mod)
-	bubble_slow_time = bubble_slow_time_base - (building_tower_slow.tower_lvl * upgrade_mod)
+	if bubble_damage >= 0.1:
+		bubble_damage = bubble_damage_base - (building_tower_slow.tower_lvl * upgrade_mod * upgrade_mod)
+		bubble_slow_time = bubble_slow_time_base - (building_tower_slow.tower_lvl * upgrade_mod)
+		print(bubble_damage)
+	elif bubble_slow_time < 0.1:
+		max_level = true
+		building_tower_slow.upgrade_tower.disabled = true
 	
 	reload_speed = reload_speed_base - (building_tower_slow.tower_lvl * upgrade_mod * upgrade_mod)
 	attack_speed.wait_time = reload_speed

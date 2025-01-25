@@ -33,7 +33,7 @@ texture_filter = 1
 script = ExtResource("1_44edq")
 
 [node name="Player" parent="." instance=ExtResource("1_v6m5q")]
-money = 150
+money = 2000000
 
 [node name="Background" type="Control" parent="Player"]
 z_index = -50
@@ -159,3 +159,10 @@ rotation = 1.5708
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
+
+[node name="GameSpeed" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="GameSpeed" to="." method="_on_game_speed_timeout"]

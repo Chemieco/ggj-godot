@@ -15,6 +15,7 @@ var spawn_path :Array
 var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
 var next_enemy_type :Array = ["spawn_enemy_normal"]
+var max_time_scale :float = 3.0
 
 
 
@@ -42,3 +43,10 @@ func spawn_enemy_normal():
 	next_spawn_path.progress_ratio = randf()
 	new_enemy.global_position = next_spawn_path.global_position
 	add_child(new_enemy)
+
+
+func _on_game_speed_timeout():
+	if Engine.time_scale < max_time_scale:
+		Engine.time_scale *= 1.1
+	else:
+		Engine.time_scale = max_time_scale

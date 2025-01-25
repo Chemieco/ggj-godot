@@ -33,7 +33,6 @@ func _ready():
 
 func _physics_process(delta):
 	move(delta)
-	print(slow_timer.time_left)
 
 
 func get_damage(x):
@@ -61,5 +60,7 @@ func move(delta):
 		sprite.flip_h = false
 	elif player.global_position.x - global_position.x <= 0:
 		sprite.flip_h = true
-	else:
-		queue_free()
+
+
+func _on_slow_timer_timeout():
+	speed = base_speed
