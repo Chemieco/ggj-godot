@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfwr5k0i8peh7"]
+[gd_scene load_steps=5 format=3 uid="uid://bfwr5k0i8peh7"]
 
-[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_4lyh3"]
 [ext_resource type="Script" path="res://scenes/player/buildings/bubble_normal.gd" id="1_je45j"]
+[ext_resource type="Texture2D" uid="uid://bni8tbqojjbrv" path="res://assets/Lolli/projectile_rand.png" id="2_4atdf"]
+[ext_resource type="Texture2D" uid="uid://b5s6324q0tl2f" path="res://assets/Lolli/projectile.png" id="3_qpkgs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0sppn"]
 radius = 8.0
@@ -11,10 +12,12 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_je45j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.164706, 0.290196, 1, 1)
+[node name="Rand" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_4lyh3")
+texture = ExtResource("2_4atdf")
+
+[node name="Infill" type="Sprite2D" parent="Rand"]
+texture = ExtResource("3_qpkgs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0sppn")

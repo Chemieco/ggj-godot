@@ -16,7 +16,6 @@ script = ExtResource("1_a3iho")
 texture = ExtResource("2_krhoi")
 
 [node name="Bubble" type="Sprite2D" parent="Sprite2D"]
-self_modulate = Color(1, 1, 1, 0.764706)
 texture = ExtResource("3_bib46")
 hframes = 5
 frame = 4

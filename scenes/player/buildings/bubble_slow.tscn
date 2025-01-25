@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://df3r171edtfbw"]
+[gd_scene load_steps=5 format=3 uid="uid://df3r171edtfbw"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/bubble_slow.gd" id="1_g5usf"]
-[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_tuwma"]
+[ext_resource type="Texture2D" uid="uid://bni8tbqojjbrv" path="res://assets/Lolli/projectile_rand.png" id="2_1s1yf"]
+[ext_resource type="Texture2D" uid="uid://b5s6324q0tl2f" path="res://assets/Lolli/projectile.png" id="3_7fe4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmolm"]
 size = Vector2(32, 32)
@@ -11,13 +12,19 @@ collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_g5usf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_tuwma")
+[node name="Rand" type="Sprite2D" parent="."]
+texture = ExtResource("2_1s1yf")
+
+[node name="Infill" type="Sprite2D" parent="Rand"]
+modulate = Color(0.541176, 0.580392, 1, 1)
+texture = ExtResource("3_7fe4h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_cmolm")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 scale = Vector2(2.1, 2.2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

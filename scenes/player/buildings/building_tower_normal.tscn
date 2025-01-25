@@ -10,7 +10,6 @@ collision_mask = 0
 script = ExtResource("1_63q1c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.141176, 1, 1)
 texture = ExtResource("1_2tkax")
 
 [node name="UpgradeTower" type="Button" parent="Sprite2D"]
