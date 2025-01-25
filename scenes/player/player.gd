@@ -8,6 +8,10 @@ extends Area2D
 @export var money :int = 20
 
 
+func _process(delta):
+	update_health()
+
+
 func update_health():
 	if health >= max_health:
 		health = max_health
