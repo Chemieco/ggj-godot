@@ -8,7 +8,7 @@ extends Area2D
 
 
 #misc
-var target :Vector2
+var target
 var direction :Vector2
 
 
@@ -17,7 +17,15 @@ func _ready():
 
 
 func _physics_process(delta):
-	direction = target - global_position
+	if target == null:
+		queue_free()
+		#TODO death animation
+	else:
+		move(delta)
+
+
+func move(delta):
+	direction = target.global_position - global_position
 	direction = direction.normalized()
 	global_position += speed * direction * delta
 

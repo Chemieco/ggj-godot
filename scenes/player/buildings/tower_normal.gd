@@ -48,7 +48,7 @@ func _on_range_area_body_exited(body):
 func spawn_bubble_normal():
 	var new_projectile = preload("res://scenes/player/buildings/bubble_normal.tscn").instantiate()
 	var next_target = targets.pick_random()
-	new_projectile.target = next_target.global_position
+	new_projectile.target = next_target
 	add_child(new_projectile)
 	reloaded = false
 
