@@ -36,6 +36,7 @@ script = ExtResource("1_44edq")
 money = 150
 
 [node name="Background" type="Control" parent="Player"]
+z_index = -50
 layout_mode = 3
 anchors_preset = 0
 
