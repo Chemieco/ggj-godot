@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 #onready
 @onready var player = $"../Player"
+@onready var sprite = $Sprite2D
 
 
 #stats
@@ -17,6 +18,7 @@ var direction :Vector2
 
 
 func _ready():
+	
 	target = player.global_position
 
 
@@ -37,3 +39,8 @@ func move(delta):
 	direction = target - global_position
 	direction = direction.normalized()
 	global_position += speed * direction * delta
+	
+	if player.global_position.x - global_position.x > 0:
+		sprite.flip_h = false
+	elif player.global_position.x - global_position.x <= 0:
+		sprite.flip_h = true

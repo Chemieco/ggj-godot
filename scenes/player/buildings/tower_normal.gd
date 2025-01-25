@@ -17,13 +17,12 @@ extends StaticBody2D
 @export var bubble_damage_base : float = 0.5
 @export var reload_speed_base :float = 1.0
 @export var tower_cost_base :int = 10
-@export var upgrade_mod_base :float = 0.25
+@export var upgrade_mod :float = 0.25
 
 @export var attack_range :int = attack_range_base
 @export var bubble_damage : float = bubble_damage_base
 @export var reload_speed :float = reload_speed_base
 @export var tower_cost :int = tower_cost_base
-@export var upgrade_mod :float = upgrade_mod_base
 
 
 #misc
@@ -33,7 +32,7 @@ var active :bool = false
 
 
 func _ready():
-	pass
+	modulate.a = 0.1
 
 
 func _process(_delta):
@@ -97,6 +96,5 @@ func upgrade_stats():
 	
 	reload_speed = reload_speed_base - (building_tower_normal.tower_lvl * upgrade_mod * upgrade_mod)
 	attack_speed.wait_time = reload_speed
-	print(attack_speed.wait_time)
 	
 	tower_cost = tower_cost_base + (building_tower_normal.tower_lvl * upgrade_mod)

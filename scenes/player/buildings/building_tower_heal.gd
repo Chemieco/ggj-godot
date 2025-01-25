@@ -3,19 +3,29 @@ extends StaticBody2D
 #onready
 @onready var upgrade_tower = $Sprite2D/UpgradeTower
 @onready var player = $".."
+@onready var heal_timer = $HealTimer
 
 
 #stats
 @export var upgrade_cost :int = 50
-@export var tower_lvl :int = 1
+@export var tower_lvl :int = 0
+@export var upgrade_mod :float = 0.25
+
+@export var tower_heal_base :float = 1.0
+@export var tower_speed_base : float = 5.0
+
+var tower_heal :float 
+var tower_speed :float
 
 
 #misc
 
 
-
 func _ready():
+	tower_heal = tower_heal_base
+	tower_speed = tower_speed_base
 	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
+	upgrade_stats()
 
 
 func _process(_delta):
@@ -36,3 +46,19 @@ func check_money():
 	elif player.money >= upgrade_cost:
 		upgrade_tower.disabled = false
 		modulate.a = 1
+
+
+func heal():
+	upgrade_stats()
+	player.health += tower_heal
+
+
+func upgrade_stats():
+	tower_heal = tower_heal_base + (tower_lvl * upgrade_mod)
+	
+	tower_speed = tower_speed_base - (tower_lvl * upgrade_mod * upgrade_mod)
+	heal_timer.wait_time = tower_speed
+
+
+func _on_heal_timer_timeout():
+	heal()
