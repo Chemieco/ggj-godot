@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=18 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://5ej26fcwiwd8" path="res://scenes/player/buildings/building_tower_slow.tscn" id="6_gra6e"]
 [ext_resource type="PackedScene" uid="uid://naxi80a8lev5" path="res://scenes/player/buildings/building_tower_heal.tscn" id="7_mvxj5"]
 [ext_resource type="PackedScene" uid="uid://cxjb0a1p5aobb" path="res://scenes/player/buildings/tower_slow.tscn" id="8_51my1"]
+[ext_resource type="Texture2D" uid="uid://dhhtaii1g6emi" path="res://assets/background/bg1.png" id="10_mvjsy"]
+[ext_resource type="Texture2D" uid="uid://dhlkoy7jn7pg6" path="res://assets/background/bg2.png" id="11_6lpx1"]
+[ext_resource type="Texture2D" uid="uid://dyqbl6sgdh4k" path="res://assets/background/bg3.png" id="12_ivqqv"]
+[ext_resource type="Texture2D" uid="uid://bryvtaqwq307y" path="res://assets/background/bg4.png" id="13_6acjq"]
+[ext_resource type="Texture2D" uid="uid://ce717g88b26pr" path="res://assets/background/bg51.png" id="14_oe4ge"]
+[ext_resource type="Texture2D" uid="uid://d1ke2xj1sbajw" path="res://assets/background/bg52.png" id="15_w07wm"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -23,10 +29,67 @@ _data = {
 point_count = 2
 
 [node name="Main" type="Node2D"]
+texture_filter = 1
 script = ExtResource("1_44edq")
 
 [node name="Player" parent="." instance=ExtResource("1_v6m5q")]
 money = 150
+
+[node name="Background" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BG1" type="Parallax2D" parent="Player/Background"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG1"]
+texture_filter = 1
+texture = ExtResource("10_mvjsy")
+
+[node name="BG2" type="Parallax2D" parent="Player/Background"]
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-10, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG2"]
+texture_filter = 1
+texture = ExtResource("11_6lpx1")
+
+[node name="BG3" type="Parallax2D" parent="Player/Background"]
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-20, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG3"]
+texture_filter = 1
+texture = ExtResource("12_ivqqv")
+
+[node name="BG4" type="Parallax2D" parent="Player/Background"]
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG4"]
+texture_filter = 1
+texture = ExtResource("13_6acjq")
+
+[node name="BG51" type="Parallax2D" parent="Player/Background"]
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-40, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG51"]
+texture_filter = 1
+texture = ExtResource("14_oe4ge")
+
+[node name="BG52" type="Parallax2D" parent="Player/Background"]
+scroll_offset = Vector2(480, 0)
+repeat_size = Vector2(960, 0)
+autoscroll = Vector2(-40, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Background/BG52"]
+texture_filter = 1
+texture = ExtResource("15_w07wm")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
