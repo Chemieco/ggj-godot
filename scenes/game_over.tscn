@@ -28,14 +28,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -175.0
-offset_top = 117.0
-offset_right = 167.0
-offset_bottom = 224.0
+offset_left = -174.0
+offset_top = 208.0
+offset_right = 168.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Restart" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
 theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
@@ -48,6 +49,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
 text = "Restart"
 
 [node name="Credits" type="Button" parent="Buttons"]
+visible = false
 layout_mode = 2
 theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
 theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
@@ -90,7 +92,7 @@ size_flags_vertical = 1
 focus_mode = 2
 mouse_filter = 0
 theme_override_fonts/font = ExtResource("2_r18dr")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 120
 theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
 text = "Score"
 horizontal_alignment = 1
@@ -100,8 +102,9 @@ layout_mode = 2
 size_flags_vertical = 1
 focus_mode = 2
 mouse_filter = 0
+theme_override_colors/font_color = Color(0.901961, 0, 0.243137, 1)
 theme_override_fonts/font = ExtResource("2_r18dr")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
 text = "000"
 horizontal_alignment = 1
