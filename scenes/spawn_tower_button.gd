@@ -9,7 +9,7 @@ var money_back :float = 0.5
 var child
 
 
-func _process(delta):
+func _process(_delta):
 	check_money()
 
 
@@ -20,6 +20,10 @@ func check_money():
 	elif player.money >= tower_normal.tower_cost or player.money >= tower_slow.tower_cost:
 		modulate.a = 1
 		disabled = false
+	
+	set_item_text(0, str(tower_normal.tower_cost))
+	set_item_text(1, str(tower_slow.tower_cost))
+	set_item_text(2, str(50) + "%")
 
 
 func _on_item_selected(index):

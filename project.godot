@@ -33,6 +33,10 @@ collectibles=""
 towers=""
 projectiles=""
 
+[gui]
+
+theme/custom_font="res://assets/FORCED SQUARE.ttf"
+
 [input]
 
 pause={

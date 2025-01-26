@@ -12,6 +12,7 @@
 
 [node name="GameOver" type="CanvasLayer"]
 physics_interpolation_mode = 2
+layer = 128
 visible = false
 script = ExtResource("1_8xph0")
 
