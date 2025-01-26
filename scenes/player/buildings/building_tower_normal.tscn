@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://0acqg1cfepf1"]
+[gd_scene load_steps=5 format=3 uid="uid://0acqg1cfepf1"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_normal.gd" id="1_63q1c"]
 [ext_resource type="Texture2D" uid="uid://bup760uc0k8xj" path="res://assets/Turret House/Turrethouse Skinned.png" id="2_nhpmr"]
+[ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_6atld"]
 [ext_resource type="AudioStream" uid="uid://kty2ddk4a36a" path="res://assets/sounds/Loop-Lied-Beats.ogg" id="3_vey3y"]
 
 [node name="BuildingTowerNormal" type="StaticBody2D" groups=["player"]]
@@ -17,12 +18,24 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -32.0
-offset_top = -32.0
+offset_top = -36.5
 offset_right = -32.0
-offset_bottom = -32.0
+offset_bottom = -27.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_6atld")
+flat = true
+
+[node name="Label" type="Label" parent="Sprite2D/UpgradeTower"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_6atld")
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BeatsLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vey3y")
