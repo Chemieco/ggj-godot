@@ -13,6 +13,8 @@ offset_left = -259.0
 offset_top = -15.0
 offset_right = -227.0
 offset_bottom = 17.0
+tooltip_text = "Yellow Tower = Attack Tower
+Blue Tower = Slow Tower"
 theme_override_fonts/font = ExtResource("1_ndtma")
 theme_override_icons/arrow = SubResource("ImageTexture_dwmw6")
 fit_to_longest_item = false

@@ -36,6 +36,8 @@ projectiles=""
 
 [gui]
 
+timers/tooltip_delay_sec=0.2
+timers/tooltip_delay_sec.editor_hint=0.2
 theme/custom_font="res://assets/FORCED SQUARE.ttf"
 
 [input]
