@@ -5,14 +5,33 @@ extends Area2D
 
 
 #stats
-@export var health :float = 3.0
-@export var max_health :float = 3.0
+@export var max_health :float = 4.0
 @export var tower_rotation :float = 0.3
 @export var money :int = 50
+
+var health :float
+
+
+func _ready():
+	health = max_health
 
 
 func _process(_delta):
 	update_health()
+	update_bubble_stages()
+
+
+func update_bubble_stages():
+	if health >= max_health * 0.83:
+		bubble.set_frame(4)
+	elif health >= max_health * 0.67:
+		bubble.set_frame(3)
+	elif health >= max_health * 0.50:
+		bubble.set_frame(2)
+	elif health >= max_health * 0.33:
+		bubble.set_frame(1)
+	elif health >= max_health * 0.17:
+		bubble.set_frame(0)
 
 
 func update_health():
