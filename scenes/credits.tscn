@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_jq4gd"]
 [ext_resource type="Texture2D" uid="uid://deliii2npgn6t" path="res://assets/background/credits1.png" id="1_tibqp"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_xlxt2"]
-[ext_resource type="AudioStream" uid="uid://beah5q0imt78x" path="res://assets/sounds/Loop-Lied-Intro.ogg" id="4_su4ei"]
+[ext_resource type="AudioStream" uid="uid://co35kj5kmx8td" path="res://assets/sounds/Startmusic.ogg" id="4_ldjac"]
 
 [node name="credits" type="Node2D"]
 script = ExtResource("1_jq4gd")
@@ -130,7 +130,8 @@ theme_override_font_sizes/font_size = 40
 text = "BACK"
 
 [node name="Intro" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_su4ei")
+stream = ExtResource("4_ldjac")
+volume_db = -20.0
 autoplay = true
 parameters/looping = true
 
