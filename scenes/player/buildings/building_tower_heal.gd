@@ -88,3 +88,7 @@ func _on_intro_finished():
 
 func _on_violin_loop_finished():
 	%ViolinLoop.play()
+
+
+func _on_game_over_stop_music():
+	%ViolinLoop.stop()

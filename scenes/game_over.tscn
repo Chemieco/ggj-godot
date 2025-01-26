@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b07q8md4wiuq7"]
+[gd_scene load_steps=8 format=3 uid="uid://b07q8md4wiuq7"]
 
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_8xph0"]
 [ext_resource type="Texture2D" uid="uid://yx7uctvrbv22" path="res://assets/background/gameover.png" id="1_a48td"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="2_r18dr"]
+[ext_resource type="AudioStream" uid="uid://i3jlxbrjui13" path="res://assets/sounds/game-Over.ogg" id="4_hsv64"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0b8f"]
 
@@ -110,6 +111,12 @@ theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
 text = "000"
 horizontal_alignment = 1
+
+[node name="Outro" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_hsv64")
+volume_db = -25.0
+parameters/looping = true
 
 [connection signal="pressed" from="Buttons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]

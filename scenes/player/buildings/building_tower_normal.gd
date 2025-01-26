@@ -59,3 +59,7 @@ func _on_intro_finished():
 
 func _on_beats_loop_finished():
 	%BeatsLoop.play()
+
+
+func _on_game_over_stop_music():
+	%BeatsLoop.stop()

@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal stop_music
+
 #onready
 @onready var anim = $"../Hud/AnimationPlayer"
 @onready var player = $"../Player"
@@ -18,6 +20,8 @@ func _process(_delta):
 func fade():
 	anim.play("fade")
 	await anim.animation_finished
+	stop_music.emit()
+	%Outro.play()
 
 
 func _on_restart_pressed():

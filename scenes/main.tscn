@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=29 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b07q8md4wiuq7" path="res://scenes/game_over.tscn" id="19_ijms4"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="20_f5oba"]
 [ext_resource type="Script" path="res://scenes/money.gd" id="20_hxx40"]
+[ext_resource type="AudioStream" uid="uid://beah5q0imt78x" path="res://assets/sounds/Loop-Lied-Intro.ogg" id="22_ib3m3"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -251,6 +252,7 @@ texture_filter = 1
 texture = ExtResource("15_w07wm")
 
 [node name="BaseLoop" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("17_qkuot")
 volume_db = -20.0
@@ -258,6 +260,7 @@ autoplay = true
 parameters/looping = true
 
 [node name="FinalLoop" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("18_yc7f7")
 volume_db = -25.0
@@ -307,7 +310,20 @@ color = Color(0, 0, 0, 0)
 [node name="GameOver" parent="." instance=ExtResource("19_ijms4")]
 process_mode = 3
 
+[node name="Intro" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("22_ib3m3")
+autoplay = true
+
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerSlow" to="." method="_on_building_tower_slow_building_spawned"]
 [connection signal="timeout" from="EnemyLevelUp" to="." method="_on_enemy_level_up_timeout"]
+[connection signal="stop_music" from="GameOver" to="." method="_on_game_over_stop_music"]
+[connection signal="stop_music" from="GameOver" to="Player/BuildingTowerHeal" method="_on_game_over_stop_music"]
+[connection signal="stop_music" from="GameOver" to="Player/BuildingTowerNormal" method="_on_game_over_stop_music"]
+[connection signal="stop_music" from="GameOver" to="Player/BuildingTowerSlow" method="_on_game_over_stop_music"]
+[connection signal="finished" from="Intro" to="." method="_on_intro_finished"]
+[connection signal="finished" from="Intro" to="Player/BuildingTowerHeal" method="_on_intro_finished"]
+[connection signal="finished" from="Intro" to="Player/BuildingTowerNormal" method="_on_intro_finished"]
+[connection signal="finished" from="Intro" to="Player/BuildingTowerSlow" method="_on_intro_finished"]
