@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://crm1vxtglxw7x"]
+[gd_scene load_steps=15 format=3 uid="uid://crm1vxtglxw7x"]
 
 [ext_resource type="Script" path="res://scenes/menu.gd" id="1_g1ywt"]
 [ext_resource type="PackedScene" uid="uid://ct2fnuxswex2h" path="res://scenes/background.tscn" id="2_yn1fd"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_16v1p"]
 [ext_resource type="AudioStream" uid="uid://beah5q0imt78x" path="res://assets/sounds/Loop-Lied-Intro.ogg" id="4_xxky4"]
+[ext_resource type="Texture2D" uid="uid://c0i7504admj2e" path="res://assets/title.png" id="5_ydxo6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0b8f"]
 
@@ -45,6 +46,7 @@ color = Color(0.227451, 0.447059, 0.768627, 1)
 [node name="background" parent="." instance=ExtResource("2_yn1fd")]
 
 [node name="GameName" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -65,10 +67,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -173.0
-offset_top = 90.0
-offset_right = 169.0
-offset_bottom = 197.0
+offset_left = -175.0
+offset_top = 117.0
+offset_right = 167.0
+offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -110,6 +112,11 @@ text = "Credits"
 stream = ExtResource("4_xxky4")
 autoplay = true
 parameters/looping = true
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(469, 223)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_ydxo6")
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
