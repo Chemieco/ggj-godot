@@ -305,6 +305,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
 [node name="GameOver" parent="." instance=ExtResource("19_ijms4")]
+process_mode = 3
 
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]
