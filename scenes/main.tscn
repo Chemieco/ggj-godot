@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=26 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d1ke2xj1sbajw" path="res://assets/background/bg52.png" id="15_w07wm"]
 [ext_resource type="AudioStream" uid="uid://bfulew0aypdyq" path="res://assets/sounds/Loop-Lied-Base.ogg" id="17_qkuot"]
 [ext_resource type="AudioStream" uid="uid://cowhjih75apa5" path="res://assets/sounds/Loop-Lied-Finalbonus.ogg" id="18_yc7f7"]
+[ext_resource type="PackedScene" uid="uid://b07q8md4wiuq7" path="res://scenes/game_over.tscn" id="19_ijms4"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -30,6 +31,83 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -580, -270, 0, 0, 0, 0, -580, 270)
 }
 point_count = 2
+
+[sub_resource type="Animation" id="Animation_cx8ke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mqtnt"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n2m6y"]
+resource_name = "fade"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6vk2"]
+_data = {
+"RESET": SubResource("Animation_cx8ke"),
+"fade": SubResource("Animation_n2m6y"),
+"fade_in": SubResource("Animation_mqtnt")
+}
 
 [node name="Main" type="Node2D"]
 texture_filter = 1
@@ -201,12 +279,14 @@ texture_filter = 1
 texture = ExtResource("15_w07wm")
 
 [node name="BaseLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("17_qkuot")
 volume_db = -20.0
 autoplay = true
 parameters/looping = true
 
 [node name="FinalLoop" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("18_yc7f7")
 volume_db = -25.0
 autoplay = true
@@ -217,6 +297,31 @@ parameters/looping = true
 process_callback = 0
 wait_time = 30.0
 autostart = true
+
+[node name="Hud" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 128
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud"]
+root_node = NodePath("../../GameOver")
+libraries = {
+"": SubResource("AnimationLibrary_l6vk2")
+}
+autoplay = "RESET"
+
+[node name="Fade" type="ColorRect" parent="Hud/AnimationPlayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="GameOver" parent="." instance=ExtResource("19_ijms4")]
+process_mode = 3
+layer = 100
+visible = false
 
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]

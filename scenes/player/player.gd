@@ -2,6 +2,8 @@ extends Area2D
 
 #onready
 @onready var bubble :Sprite2D = $Sprite2D/Bubble
+@onready var game_over = $"../GameOver"
+
 
 
 #stats
@@ -39,9 +41,8 @@ func update_health():
 		health = max_health
 	
 	if health <= 0:
+		game_over.call("fade")
 		get_tree().paused = true
-		queue_free()
-		#TODO Death Animation
 
 
 func _on_body_entered(body):

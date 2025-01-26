@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://b07q8md4wiuq7"]
+
+[ext_resource type="Script" path="res://scenes/game_over.gd" id="1_8xph0"]
+[ext_resource type="Texture2D" uid="uid://yx7uctvrbv22" path="res://assets/background/gameover.png" id="1_a48td"]
+[ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="2_r18dr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0b8f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ve5t"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lstkh"]
+
+[node name="GameOver" type="CanvasLayer"]
+physics_interpolation_mode = 2
+script = ExtResource("1_8xph0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_a48td")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 117.0
+offset_right = 167.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("2_r18dr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_a0b8f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ve5t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
+text = "Restart"
+
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("2_r18dr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_a0b8f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ve5t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
+text = "Credits"
+
+[node name="BackToMenu" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_hover_color = Color(1, 0.835294, 0.490196, 1)
+theme_override_colors/font_pressed_color = Color(0.901961, 0, 0.243137, 1)
+theme_override_fonts/font = ExtResource("2_r18dr")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxTexture_a0b8f")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ve5t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
+text = "Back to Menu"
+
+[node name="Stats" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -170.0
+offset_right = 167.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Label" parent="Stats"]
+layout_mode = 2
+size_flags_vertical = 1
+focus_mode = 2
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("2_r18dr")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
+text = "Score"
+horizontal_alignment = 1
+
+[node name="Points" type="Label" parent="Stats"]
+layout_mode = 2
+size_flags_vertical = 1
+focus_mode = 2
+mouse_filter = 0
+theme_override_fonts/font = ExtResource("2_r18dr")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_lstkh")
+text = "000"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Buttons/BackToMenu" to="." method="_on_back_to_menu_pressed"]
