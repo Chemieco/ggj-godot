@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bagkegph3wm6r"]
+[gd_scene load_steps=6 format=3 uid="uid://bagkegph3wm6r"]
 
 [ext_resource type="Script" path="res://scenes/spawn_tower_button.gd" id="1_2etpp"]
 [ext_resource type="Texture2D" uid="uid://d1x30w07r51he" path="res://assets/Starfish/Starfish turret.png" id="1_kwlna"]
 [ext_resource type="Texture2D" uid="uid://c4pjrqfeycqak" path="res://assets/Starfish/Slowstar.png" id="2_hfrlh"]
+[ext_resource type="Texture2D" uid="uid://8nnkfcnq4o33" path="res://assets/Lolli/sell.png" id="3_uybud"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_dwmw6"]
 
@@ -17,6 +18,7 @@ item_count = 3
 popup/item_0/icon = ExtResource("1_kwlna")
 popup/item_1/icon = ExtResource("2_hfrlh")
 popup/item_1/id = 1
+popup/item_2/icon = ExtResource("3_uybud")
 popup/item_2/id = 2
 popup/item_2/disabled = true
 script = ExtResource("1_2etpp")
