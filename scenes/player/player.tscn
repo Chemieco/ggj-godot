@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbjqrn8v5xghl"]
+[gd_scene load_steps=7 format=3 uid="uid://bbjqrn8v5xghl"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_a3iho"]
 [ext_resource type="Texture2D" uid="uid://d03jowo173pox" path="res://assets/Lolli/insel.png" id="2_krhoi"]
 [ext_resource type="Texture2D" uid="uid://dsjq45b37g2cc" path="res://assets/Lolli/bubble.png" id="3_bib46"]
 [ext_resource type="Script" path="res://scenes/player/sprite_2d.gd" id="3_elo52"]
+[ext_resource type="AudioStream" uid="uid://d2ew76kim87gr" path="res://assets/sounds/Big-Bubble-Hurt.ogg" id="5_y3aiy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5s0rp"]
 radius = 182.003
@@ -23,5 +24,10 @@ script = ExtResource("3_elo52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5s0rp")
+
+[node name="HurtSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_y3aiy")
+volume_db = -10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

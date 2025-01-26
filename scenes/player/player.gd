@@ -52,6 +52,7 @@ func _on_body_entered(body):
 	if body.is_in_group("enemies"):
 		bubble.add_trauma(0.3)
 		health -= body.damage
+		%HurtSound.play()
 		body.queue_free()
 		## TODO death animation
 
