@@ -23,6 +23,8 @@ offset_right = -32.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "Attack Tower
+Upgrade"
 theme_override_fonts/font = ExtResource("3_6atld")
 flat = true
 
