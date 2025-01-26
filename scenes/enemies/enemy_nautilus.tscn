@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cd6bv01vdrygq"]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_hrjae"]
-[ext_resource type="Texture2D" uid="uid://tg2ku2njdntr" path="res://assets/Lolli/Nautilus_sheet.png" id="2_l06nh"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_nautilus.gd" id="1_h6iww"]
+[ext_resource type="Texture2D" uid="uid://tg2ku2njdntr" path="res://assets/Lolli/Nautilus_sheet.png" id="2_mk8bv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dfwhd"]
 radius = 19.0
@@ -45,12 +45,12 @@ _data = {
 "move": SubResource("Animation_dklht")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="EnemyNautilus" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 2
-script = ExtResource("1_hrjae")
+script = ExtResource("1_h6iww")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l06nh")
+texture = ExtResource("2_mk8bv")
 hframes = 8
 frame = 1
 

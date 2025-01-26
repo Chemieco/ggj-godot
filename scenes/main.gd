@@ -12,7 +12,8 @@ var enemy_lvl :int = 1
 var spawn_path :Array
 var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
-var next_enemy_type :Array = ["spawn_enemy_normal"]
+var spawn_time_mod :float = 0.9
+var next_enemy_type :Array = ["spawn_enemy_nautilus", "spawn_enemy_puffer"]
 var buildingcount: int = 0
 
 
@@ -34,12 +35,19 @@ func spawn_counter(delta):
 	if spawn_time_counter >= spawn_time:
 		var next_enemy = next_enemy_type.pick_random()
 		call(next_enemy)
-		#TODO Array für zusätzliche Enemytypes einfügen
 		spawn_time_counter = 0
 
 
-func spawn_enemy_normal():
-	var new_enemy = preload("res://scenes/enemies/enemy.tscn").instantiate()
+func spawn_enemy_nautilus():
+	var new_enemy = preload("res://scenes/enemies/enemy_nautilus.tscn").instantiate()
+	var next_spawn_path = spawn_path.pick_random()
+	next_spawn_path.progress_ratio = randf()
+	new_enemy.global_position = next_spawn_path.global_position
+	add_child(new_enemy)
+
+
+func spawn_enemy_puffer():
+	var new_enemy = preload("res://scenes/enemies/enemy_puffer.tscn").instantiate()
 	var next_spawn_path = spawn_path.pick_random()
 	next_spawn_path.progress_ratio = randf()
 	new_enemy.global_position = next_spawn_path.global_position
@@ -65,3 +73,5 @@ func _on_building_tower_slow_building_spawned():
 
 func _on_enemy_level_up_timeout():
 	enemy_lvl += 1
+	spawn_time *= spawn_time_mod
+	

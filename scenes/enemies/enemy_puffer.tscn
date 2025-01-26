@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cstxe05auhwsp"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_puffer.gd" id="1_bhe3j"]
+[ext_resource type="Texture2D" uid="uid://bo5gt33xh1jvg" path="res://assets/Lolli/Pufferfish-sheet.png" id="2_samr1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dn7ar"]
+radius = 14.0
+height = 32.0
+
+[sub_resource type="Animation" id="Animation_26k6b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_dklht"]
+resource_name = "move"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sivgd"]
+_data = {
+"RESET": SubResource("Animation_26k6b"),
+"move": SubResource("Animation_dklht")
+}
+
+[node name="EnemyPuffer" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+script = ExtResource("1_bhe3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_samr1")
+hframes = 8
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_dn7ar")
+
+[node name="SlowTimer" type="Timer" parent="."]
+process_callback = 0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sivgd")
+}
+autoplay = "move"
+speed_scale = 0.3
+
+[connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]

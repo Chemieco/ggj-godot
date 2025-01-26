@@ -76,4 +76,5 @@ func upgrade_stats():
 
 
 func _on_heal_timer_timeout():
-	heal()
+	if tower_lvl > 0:
+		heal()

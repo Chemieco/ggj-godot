@@ -10,9 +10,9 @@ extends CharacterBody2D
 @export var lvl :int
 @export var lvl_mod : float = 0.25
 
-@export var base_speed :float = 50
+@export var base_speed :float = 25
 @export var base_damage :float = 1.0
-@export var base_health :float = 2.0
+@export var base_health :float = 3.0
 @export var base_loot :int = 5
 
 var damage :float
