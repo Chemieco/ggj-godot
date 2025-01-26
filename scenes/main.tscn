@@ -37,7 +37,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
+tracks/0/path = NodePath("Fade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,33 +46,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_mqtnt"]
-resource_name = "fade_in"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_n2m6y"]
 resource_name = "fade"
@@ -80,7 +53,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Hud/AnimationPlayer/Fade:color")
+tracks/0/path = NodePath("Fade:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +65,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
+tracks/1/path = NodePath("../GameOver:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,6 +74,9 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+
+[sub_resource type="Animation" id="Animation_mqtnt"]
+resource_name = "fade_in"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6vk2"]
 _data = {
@@ -302,14 +278,7 @@ autostart = true
 process_mode = 3
 layer = 128
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud"]
-root_node = NodePath("../../GameOver")
-libraries = {
-"": SubResource("AnimationLibrary_l6vk2")
-}
-autoplay = "RESET"
-
-[node name="Fade" type="ColorRect" parent="Hud/AnimationPlayer"]
+[node name="Fade" type="ColorRect" parent="Hud"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -318,10 +287,13 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hud"]
+libraries = {
+"": SubResource("AnimationLibrary_l6vk2")
+}
+autoplay = "RESET"
+
 [node name="GameOver" parent="." instance=ExtResource("19_ijms4")]
-process_mode = 3
-layer = 100
-visible = false
 
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]
