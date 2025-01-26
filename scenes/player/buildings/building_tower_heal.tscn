@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://naxi80a8lev5"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_heal.gd" id="1_u7i2t"]
-[ext_resource type="Texture2D" uid="uid://4cug6el4c6ot" path="res://assets/Lolli/heal_house_animation.png" id="2_kwecg"]
+[ext_resource type="Texture2D" uid="uid://dujhdr2wc61bv" path="res://assets/Heal House/heal_house_animation.png" id="2_2ru52"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_c64p8"]
 [ext_resource type="AudioStream" uid="uid://cu2evljt1pdld" path="res://assets/sounds/Loop-Lied-Streicher.ogg" id="3_ewhqx"]
 
@@ -49,7 +49,7 @@ collision_mask = 0
 script = ExtResource("1_u7i2t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_kwecg")
+texture = ExtResource("2_2ru52")
 hframes = 5
 frame = 1
 

@@ -102,13 +102,13 @@ script = ExtResource("3_ex56j")
 
 [node name="BuildingTowerHeal" parent="Player" instance=ExtResource("7_mvxj5")]
 y_sort_enabled = true
-position = Vector2(-77, -8)
+position = Vector2(-81, -16)
 
 [node name="BuildingTowerNormal" parent="Player" instance=ExtResource("3_gbodl")]
-position = Vector2(65, -9)
+position = Vector2(82, -9)
 
 [node name="BuildingTowerSlow" parent="Player" instance=ExtResource("6_gra6e")]
-position = Vector2(1, 7)
+position = Vector2(1, 1)
 
 [node name="BubbleNormal" parent="Player" instance=ExtResource("7_etw12")]
 
