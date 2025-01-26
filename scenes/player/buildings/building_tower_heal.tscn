@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://naxi80a8lev5"]
+[gd_scene load_steps=8 format=3 uid="uid://naxi80a8lev5"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/building_tower_heal.gd" id="1_u7i2t"]
 [ext_resource type="Texture2D" uid="uid://4cug6el4c6ot" path="res://assets/Lolli/heal_house_animation.png" id="2_kwecg"]
+[ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="3_c64p8"]
 [ext_resource type="AudioStream" uid="uid://cu2evljt1pdld" path="res://assets/sounds/Loop-Lied-Streicher.ogg" id="3_ewhqx"]
 
 [sub_resource type="Animation" id="Animation_del4d"]
@@ -57,12 +58,24 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -32.0
-offset_top = -32.0
+offset_top = -35.0
 offset_right = -32.0
-offset_bottom = -32.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_c64p8")
 flat = true
+
+[node name="Label" type="Label" parent="Sprite2D/UpgradeTower"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_c64p8")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HealTimer" type="Timer" parent="."]
 process_callback = 0

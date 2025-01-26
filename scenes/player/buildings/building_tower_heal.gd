@@ -4,6 +4,7 @@ signal building_spawned
 
 #onready
 @onready var upgrade_tower = $Sprite2D/UpgradeTower
+@onready var label = $Sprite2D/UpgradeTower/Label
 @onready var player = $".."
 @onready var heal_timer = $HealTimer
 
@@ -29,7 +30,7 @@ func _ready():
 	tower_speed = tower_speed_base
 	upgrade_cost = upgrade_cost_base
 	
-	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
+	label.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	upgrade_stats()
 	#mute tower music
 	AudioServer.set_bus_mute(2, true)
@@ -43,7 +44,7 @@ func _on_upgrade_tower_pressed():
 	player.money -= upgrade_cost
 	tower_lvl += 1
 	upgrade_cost = tower_lvl * upgrade_cost_base
-	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
+	label.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	#music on
 	if AudioServer.is_bus_mute(2):
 		AudioServer.set_bus_mute(2, false)

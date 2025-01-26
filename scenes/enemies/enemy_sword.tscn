@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cqqwq3vo6puwu" path="res://assets/Lolli/Schwertfish-sheet.png" id="1_ujvwd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w0bbu"]
-radius = 10.0
 height = 64.0
 
 [sub_resource type="Animation" id="Animation_26k6b"]
