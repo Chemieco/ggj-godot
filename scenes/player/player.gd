@@ -58,5 +58,3 @@ func _on_body_entered(body):
 
 func update_score(delta):
 	score += delta
-	print(score)
-	

@@ -2,10 +2,17 @@ extends CanvasLayer
 
 #onready
 @onready var anim = $"../Hud/AnimationPlayer"
+@onready var player = $"../Player"
+@onready var points_label = $Stats/Points
+
 
 
 func _ready():
 	self.set_visible(false)
+
+
+func _process(_delta):
+	points_label.text = "%02d" % player.score
 
 
 func fade():
