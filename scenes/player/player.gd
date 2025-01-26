@@ -12,15 +12,17 @@ extends Area2D
 @export var money :int = 50
 
 var health :float
+var score :float = 0.0
 
 
 func _ready():
 	health = max_health
 
 
-func _process(_delta):
+func _process(delta):
 	update_health()
 	update_bubble_stages()
+	update_score(delta)
 
 
 func update_bubble_stages():
@@ -52,3 +54,9 @@ func _on_body_entered(body):
 		health -= body.damage
 		body.queue_free()
 		## TODO death animation
+
+
+func update_score(delta):
+	score += delta
+	print(score)
+	

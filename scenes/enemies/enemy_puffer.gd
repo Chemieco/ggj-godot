@@ -49,6 +49,7 @@ func get_damage(x):
 	
 	if health <= 0:
 		player.money += loot
+		player.score += base_health
 		queue_free()
 		#TODO death animation 
 
