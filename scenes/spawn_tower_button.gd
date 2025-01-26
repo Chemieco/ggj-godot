@@ -14,7 +14,7 @@ func _process(delta):
 
 
 func check_money():
-	if player.money < tower_normal.tower_cost and player.money < tower_slow.tower_cost:
+	if player.money < tower_normal.tower_cost and player.money < tower_slow.tower_cost and self_modulate.a != 0:
 		modulate.a = 0.5
 		disabled = true
 	elif player.money >= tower_normal.tower_cost or player.money >= tower_slow.tower_cost:
