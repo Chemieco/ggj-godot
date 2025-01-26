@@ -68,6 +68,7 @@ func _on_building_tower_normal_building_spawned():
 	if buildingcount == 3:
 		AudioServer.set_bus_mute(5, false)
 
+
 func _on_building_tower_heal_building_spawned():
 	buildingcount += 1
 	if buildingcount == 3:

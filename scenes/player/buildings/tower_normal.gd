@@ -14,6 +14,7 @@ extends StaticBody2D
 @export var bubble_damage_base : float = 1.0
 @export var reload_speed_base :float = 1.0
 @export var tower_cost_base :int = 10
+@export var rota_speed :int = 50
 
 var attack_range :int = attack_range_base
 var bubble_damage : float = bubble_damage_base
@@ -26,16 +27,24 @@ var reloaded :bool = true
 
 
 func _ready():
+	randomize()
+	rota_speed = randi_range(rota_speed * 0.9, rota_speed * 1.1)
+	
 	attack_range = attack_range_base
 	bubble_damage = bubble_damage_base
 	reload_speed = reload_speed_base
 	tower_cost = tower_cost_base
 
 
-func _process(_delta):
+func _process(delta):
 	upgrade_stats()
 	attack()
+	rota(delta)
 	#check_money()
+
+
+func rota(delta):
+	rotation_degrees += delta * rota_speed
 
 
 func attack():

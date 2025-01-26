@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxjb0a1p5aobb"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/tower_slow.gd" id="1_r5xkp"]
-[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="2_0lja1"]
+[ext_resource type="Texture2D" uid="uid://c4pjrqfeycqak" path="res://assets/Starfish/Slowstar.png" id="2_8prla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qteo6"]
 
@@ -15,7 +15,7 @@ script = ExtResource("1_r5xkp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.297776, 0.857397, 0.486322, 1)
-texture = ExtResource("2_0lja1")
+texture = ExtResource("2_8prla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

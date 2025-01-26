@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://i1xh47ybyfws"]
 
 [ext_resource type="Script" path="res://scenes/player/buildings/tower_normal.gd" id="1_8osee"]
-[ext_resource type="Texture2D" uid="uid://caif4qmcep4ov" path="res://scenes/player/buildings/32x32.png" id="1_a8akq"]
+[ext_resource type="Texture2D" uid="uid://d1x30w07r51he" path="res://assets/Starfish/Starfish turret.png" id="2_hu1h7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ta1k"]
 size = Vector2(32, 32)
@@ -15,7 +15,7 @@ collision_mask = 2
 script = ExtResource("1_8osee")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_a8akq")
+texture = ExtResource("2_hu1h7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
