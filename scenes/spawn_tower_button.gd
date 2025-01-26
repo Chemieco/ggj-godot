@@ -9,6 +9,18 @@ var money_back :float = 0.5
 var child
 
 
+func _process(delta):
+	check_money()
+
+
+func check_money():
+	if player.money < tower_normal.tower_cost and player.money < tower_slow.tower_cost:
+		modulate.a = 0.5
+		disabled = true
+	elif player.money >= tower_normal.tower_cost or player.money >= tower_slow.tower_cost:
+		modulate.a = 1
+		disabled = false
+
 
 func _on_item_selected(index):
 	if index == 0:
@@ -20,9 +32,9 @@ func _on_item_selected(index):
 			player.money -= tower_normal.tower_cost
 			self_modulate.a = 0
 			#self.disabled = true
-		else:
-			pass
-			#error sound
+		elif player.money < tower_slow.tower_cost:
+			selected = -1
+			#TODO error sound
 	elif index == 1:
 		if player.money >= tower_slow.tower_cost:
 			spawn_tower_slow()
@@ -32,9 +44,9 @@ func _on_item_selected(index):
 			player.money -= tower_slow.tower_cost
 			self_modulate.a = 0
 			#self.disabled = true
-		else:
-			pass
-			#error sound
+		elif player.money < tower_slow.tower_cost:
+			selected = -1
+			#TODO error sound
 	elif index == 2:
 		player.money += child.tower_cost * money_back
 		child.call("queue_free")

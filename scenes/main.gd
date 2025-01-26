@@ -13,7 +13,7 @@ var spawn_path :Array
 var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
 var spawn_time_mod :float = 0.9
-var next_enemy_type :Array = ["spawn_enemy_nautilus", "spawn_enemy_puffer"]
+var next_enemy_type :Array = ["spawn_enemy_nautilus", "spawn_enemy_puffer", "spawn_enemy_sword"]
 var buildingcount: int = 0
 
 
@@ -48,6 +48,14 @@ func spawn_enemy_nautilus():
 
 func spawn_enemy_puffer():
 	var new_enemy = preload("res://scenes/enemies/enemy_puffer.tscn").instantiate()
+	var next_spawn_path = spawn_path.pick_random()
+	next_spawn_path.progress_ratio = randf()
+	new_enemy.global_position = next_spawn_path.global_position
+	add_child(new_enemy)
+
+
+func spawn_enemy_sword():
+	var new_enemy = preload("res://scenes/enemies/enemy_sword.tscn").instantiate()
 	var next_spawn_path = spawn_path.pick_random()
 	next_spawn_path.progress_ratio = randf()
 	new_enemy.global_position = next_spawn_path.global_position

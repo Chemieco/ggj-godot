@@ -35,7 +35,7 @@ func _ready():
 func _process(_delta):
 	upgrade_stats()
 	attack()
-	check_money()
+	#check_money()
 
 
 func attack():

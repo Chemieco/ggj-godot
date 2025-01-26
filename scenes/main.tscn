@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=20 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
 [ext_resource type="PackedScene" uid="uid://bbjqrn8v5xghl" path="res://scenes/player/player.tscn" id="1_v6m5q"]
-[ext_resource type="PackedScene" uid="uid://cd6bv01vdrygq" path="res://scenes/enemies/enemy_nautilus.tscn" id="2_dwpmd"]
 [ext_resource type="Script" path="res://scenes/debug.gd" id="3_ex56j"]
 [ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building_tower_normal.tscn" id="3_gbodl"]
 [ext_resource type="PackedScene" uid="uid://5ej26fcwiwd8" path="res://scenes/player/buildings/building_tower_slow.tscn" id="6_gra6e"]
@@ -123,10 +122,6 @@ offset_left = 124.0
 offset_top = -244.0
 offset_right = 156.0
 offset_bottom = -212.0
-
-[node name="Enemy" parent="." instance=ExtResource("2_dwpmd")]
-visible = false
-position = Vector2(-185, -2234)
 
 [node name="PathRight" type="Path2D" parent="."]
 curve = SubResource("Curve2D_8wolb")
