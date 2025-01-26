@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://b07q8md4wiuq7" path="res://scenes/game_over.tscn" id="19_ijms4"]
 [ext_resource type="FontFile" uid="uid://uqul8vhiuauj" path="res://assets/FORCED SQUARE.ttf" id="20_f5oba"]
 [ext_resource type="Script" path="res://scenes/money.gd" id="20_hxx40"]
-[ext_resource type="AudioStream" uid="uid://beah5q0imt78x" path="res://assets/sounds/Loop-Lied-Intro.ogg" id="22_14rg8"]
+[ext_resource type="AudioStream" uid="uid://gygs8bpgwn5y" path="res://assets/sounds/Loop Lied Intro Neu.ogg" id="22_u032p"]
 
 [sub_resource type="Curve2D" id="Curve2D_8wolb"]
 _data = {
@@ -309,7 +309,7 @@ process_mode = 3
 
 [node name="Intro" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
-stream = ExtResource("22_14rg8")
+stream = ExtResource("22_u032p")
 autoplay = true
 
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://gygs8bpgwn5y"
+path="res://.godot/imported/Loop Lied Intro Neu.ogg-fccdc9a29a39f65cf66d28fd174d26f2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sounds/Loop Lied Intro Neu.ogg"
+dest_files=["res://.godot/imported/Loop Lied Intro Neu.ogg-fccdc9a29a39f65cf66d28fd174d26f2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
