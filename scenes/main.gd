@@ -5,21 +5,20 @@ extends Node2D
 @onready var spawn_path_right :PathFollow2D = $PathRight/SpawnPathRight
 @onready var spawn_path_left :PathFollow2D = $PathLeft/SpawnPathLeft
 
-
 #stats
-
-
+var enemy_lvl :int = 1
 
 #misc
 var spawn_path :Array
 var spawn_time : float = 3.0
 var spawn_time_counter :float = 0.0
 var next_enemy_type :Array = ["spawn_enemy_normal"]
-var max_time_scale :float = 3.0
 var buildingcount: int = 0
+
 
 func _ready():
 	randomize()
+	
 	spawn_path = [spawn_path_right, spawn_path_left]
 	#final music off
 	buildingcount = 0
@@ -47,12 +46,6 @@ func spawn_enemy_normal():
 	add_child(new_enemy)
 
 
-func _on_game_speed_timeout():
-	if Engine.time_scale < max_time_scale:
-		Engine.time_scale *= 1.1
-	else:
-		Engine.time_scale = max_time_scale
-
 #final music on
 func _on_building_tower_normal_building_spawned():
 	buildingcount += 1
@@ -68,3 +61,7 @@ func _on_building_tower_slow_building_spawned():
 	buildingcount += 1
 	if buildingcount == 3:
 		AudioServer.set_bus_mute(5, false)
+
+
+func _on_enemy_level_up_timeout():
+	enemy_lvl += 1

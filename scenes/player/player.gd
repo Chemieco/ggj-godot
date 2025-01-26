@@ -8,7 +8,7 @@ extends Area2D
 @export var health :float = 3.0
 @export var max_health :float = 3.0
 @export var tower_rotation :float = 0.3
-@export var money :int = 20
+@export var money :int = 50
 
 
 func _process(_delta):

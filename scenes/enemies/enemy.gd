@@ -4,30 +4,39 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var sprite = $Sprite2D
 @onready var slow_timer :Timer = $SlowTimer
-
-
-
+@onready var main = $".."
 
 #stats
+@export var lvl :int
+@export var lvl_mod : float = 0.25
 
 @export var base_speed :float = 50
-@export var speed :float = base_speed
-@export var damage :float = 1.0
-@export var health :float = 1.0
-@export var loot :int = 5
+@export var base_damage :float = 1.0
+@export var base_health :float = 2.0
+@export var base_loot :int = 5
 
+var damage :float
+var speed :float
+var health :float
+var loot :int
 
 #misc
 var target :Vector2
 var direction :Vector2
 var slowed :bool = false
-#var enemy_sprite :Array = ["res://assets/Nautilus_color_outline.png", "res://assets/Pufferfish.png", "res://assets/Schwertfish.png"]
 
 
 func _ready():
 	randomize()
-	#var next_sprite :String = enemy_sprite.pick_random()
-	#sprite.texture=ResourceLoader.load(next_sprite)
+	lvl = main.enemy_lvl
+	damage = base_damage
+	speed = base_speed
+	health = base_health
+	loot = base_loot
+	
+	if lvl > 1:
+		stat_update()
+	
 	target = player.global_position
 
 
@@ -45,12 +54,11 @@ func get_damage(x):
 
 
 func get_slowed(b_dmg, b_slow_time):
-	if b_slow_time <= 0.125:
-		b_slow_time = 0.125
+	#if b_slow_time <= 0.125:
+	#	b_slow_time = 0.125
 	speed = base_speed * b_dmg
 	slow_timer.wait_time = b_slow_time
 	slow_timer.start()
-	
 
 
 func move(delta):
@@ -66,3 +74,10 @@ func move(delta):
 
 func _on_slow_timer_timeout():
 	speed = base_speed
+
+
+func stat_update():
+	damage = base_damage + (lvl * lvl_mod)
+	speed = base_speed + (lvl * lvl_mod)
+	health = base_health + (lvl * lvl_mod)
+	loot = base_loot + (lvl * lvl_mod)

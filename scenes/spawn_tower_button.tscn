@@ -17,6 +17,7 @@ popup/item_1/text = "S"
 popup/item_1/id = 1
 popup/item_2/text = "$"
 popup/item_2/id = 2
+popup/item_2/disabled = true
 script = ExtResource("1_2etpp")
 
 [connection signal="item_selected" from="." to="." method="_on_item_selected"]

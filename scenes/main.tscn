@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dyqbl6sgdh4k" path="res://assets/background/bg3.png" id="12_ivqqv"]
 [ext_resource type="Texture2D" uid="uid://bryvtaqwq307y" path="res://assets/background/bg4.png" id="13_6acjq"]
 [ext_resource type="Texture2D" uid="uid://ce717g88b26pr" path="res://assets/background/bg51.png" id="14_oe4ge"]
-[ext_resource type="PackedScene" path="res://scenes/spawn_tower_button.tscn" id="15_857hr"]
+[ext_resource type="PackedScene" uid="uid://bagkegph3wm6r" path="res://scenes/spawn_tower_button.tscn" id="15_857hr"]
 [ext_resource type="Texture2D" uid="uid://d1ke2xj1sbajw" path="res://assets/background/bg52.png" id="15_w07wm"]
 [ext_resource type="AudioStream" uid="uid://bfulew0aypdyq" path="res://assets/sounds/Loop-Lied-Base.ogg" id="17_qkuot"]
 [ext_resource type="AudioStream" uid="uid://cowhjih75apa5" path="res://assets/sounds/Loop-Lied-Finalbonus.ogg" id="18_yc7f7"]
@@ -36,7 +36,6 @@ texture_filter = 1
 script = ExtResource("1_44edq")
 
 [node name="Player" parent="." instance=ExtResource("1_v6m5q")]
-money = 2000000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -70,7 +69,6 @@ offset_left = -263.0
 offset_top = -21.0
 offset_right = -231.0
 offset_bottom = 11.0
-popup/item_2/disabled = true
 
 [node name="SpawnTowerButton2" parent="Player" instance=ExtResource("15_857hr")]
 offset_left = -242.0
@@ -146,10 +144,6 @@ rotation = 1.5708
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 current = true
 
-[node name="GameSpeed" type="Timer" parent="."]
-process_callback = 0
-wait_time = 10.0
-
 [node name="Background" type="Control" parent="."]
 z_index = -50
 layout_mode = 3
@@ -220,7 +214,12 @@ autoplay = true
 bus = &"Final"
 parameters/looping = true
 
+[node name="EnemyLevelUp" type="Timer" parent="."]
+process_callback = 0
+wait_time = 30.0
+autostart = true
+
 [connection signal="building_spawned" from="Player/BuildingTowerHeal" to="." method="_on_building_tower_heal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerNormal" to="." method="_on_building_tower_normal_building_spawned"]
 [connection signal="building_spawned" from="Player/BuildingTowerSlow" to="." method="_on_building_tower_slow_building_spawned"]
-[connection signal="timeout" from="GameSpeed" to="." method="_on_game_speed_timeout"]
+[connection signal="timeout" from="EnemyLevelUp" to="." method="_on_enemy_level_up_timeout"]

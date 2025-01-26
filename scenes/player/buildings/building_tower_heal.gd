@@ -9,24 +9,26 @@ signal building_spawned
 
 
 #stats
-@export var upgrade_cost :int = 50
 @export var tower_lvl :int = 0
 @export var upgrade_mod :float = 0.25
 
+@export var upgrade_cost_base :int = 75
 @export var tower_heal_base :float = 1.0
 @export var tower_speed_base : float = 5.0
 
 var tower_heal :float 
 var tower_speed :float
-var max_level :bool = false
-
+var upgrade_cost :int
 
 #misc
+var max_level :bool = false
 
 
 func _ready():
 	tower_heal = tower_heal_base
 	tower_speed = tower_speed_base
+	upgrade_cost = upgrade_cost_base
+	
 	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	upgrade_stats()
 	#mute tower music
@@ -40,7 +42,7 @@ func _process(_delta):
 func _on_upgrade_tower_pressed():
 	player.money -= upgrade_cost
 	tower_lvl += 1
-	upgrade_cost = tower_lvl * upgrade_cost
+	upgrade_cost = tower_lvl * upgrade_cost_base
 	upgrade_tower.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	#music on
 	if AudioServer.is_bus_mute(2):
@@ -51,10 +53,10 @@ func _on_upgrade_tower_pressed():
 func check_money():
 	if player.money < upgrade_cost:
 		upgrade_tower.disabled = true
-		modulate.a = 0.1
+		modulate.a = 0.5
 	elif player.money >= upgrade_cost and max_level == false:
 		upgrade_tower.disabled = false
-		modulate.a = 1
+		modulate.a = 1.0
 
 
 func heal():

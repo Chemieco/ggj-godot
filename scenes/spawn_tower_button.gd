@@ -5,6 +5,7 @@ extends OptionButton
 @onready var tower_slow = $"../TowerSlow"
 
 
+var money_back :float = 0.5
 var child
 
 
@@ -35,6 +36,7 @@ func _on_item_selected(index):
 			pass
 			#error sound
 	elif index == 2:
+		player.money += child.tower_cost * money_back
 		child.call("queue_free")
 		set_item_disabled(0, false)
 		set_item_disabled(1, false)
