@@ -39,6 +39,7 @@ func _on_upgrade_tower_pressed():
 	label.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	#music on
 	if AudioServer.is_bus_mute(3):
+		await %TrumpetLoop.finished
 		AudioServer.set_bus_mute(3, false)
 		building_spawned.emit()
 
@@ -50,3 +51,11 @@ func check_money():
 	elif player.money >= upgrade_cost:
 		upgrade_tower.disabled = false
 		modulate.a = 1
+
+
+func _on_intro_finished():
+	%TrumpetLoop.play()
+
+
+func _on_trumpet_loop_finished():
+	%TrumpetLoop.play()

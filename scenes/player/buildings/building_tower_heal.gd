@@ -47,6 +47,7 @@ func _on_upgrade_tower_pressed():
 	label.text = str(tower_lvl) + "(" + str(upgrade_cost) + ")"
 	#music on
 	if AudioServer.is_bus_mute(2):
+		await %ViolinLoop.finished
 		AudioServer.set_bus_mute(2, false)
 		building_spawned.emit()
 
@@ -79,3 +80,11 @@ func upgrade_stats():
 func _on_heal_timer_timeout():
 	if tower_lvl > 0:
 		heal()
+
+
+func _on_intro_finished():
+	%ViolinLoop.play()
+
+
+func _on_violin_loop_finished():
+	%ViolinLoop.play()

@@ -66,17 +66,20 @@ func spawn_enemy_sword():
 func _on_building_tower_normal_building_spawned():
 	buildingcount += 1
 	if buildingcount == 3:
+		await %FinalLoop.finished
 		AudioServer.set_bus_mute(5, false)
 
 
 func _on_building_tower_heal_building_spawned():
 	buildingcount += 1
 	if buildingcount == 3:
+		await %FinalLoop.finished
 		AudioServer.set_bus_mute(5, false)
 
 func _on_building_tower_slow_building_spawned():
 	buildingcount += 1
 	if buildingcount == 3:
+		await %FinalLoop.finished
 		AudioServer.set_bus_mute(5, false)
 
 
@@ -84,3 +87,12 @@ func _on_enemy_level_up_timeout():
 	enemy_lvl += 1
 	spawn_time *= spawn_time_mod
 	
+
+#intro music
+func _on_intro_finished():
+	%BaseLoop.play()
+	%FinalLoop.play()
+
+
+func _on_final_loop_finished():
+	%FinalLoop.play()
