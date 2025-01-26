@@ -1,19 +1,14 @@
 extends Area2D
 
-@onready var tower_slow :StaticBody2D = $".."
-
+#onready
+@onready var tower_slow :StaticBody2D = $"../TowerSlow"
 
 #stats
 @export var speed :int = 50
 
-
 #misc
 var target
 var direction :Vector2
-
-
-func _ready():
-	global_position = tower_slow.global_position
 
 
 func _physics_process(delta):

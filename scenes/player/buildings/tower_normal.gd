@@ -40,7 +40,6 @@ func _process(delta):
 	upgrade_stats()
 	attack()
 	rota(delta)
-	#check_money()
 
 
 func rota(delta):
@@ -66,19 +65,13 @@ func spawn_bubble_normal():
 	var new_projectile = preload("res://scenes/player/buildings/bubble_normal.tscn").instantiate()
 	var next_target = targets[0]
 	new_projectile.target = next_target
-	add_child(new_projectile)
+	new_projectile.global_position = global_position
+	add_sibling(new_projectile)
 	reloaded = false
 
 
 func _on_attack_speed_timeout():
 	reloaded = true
-
-
-func check_money():
-	if player.money < tower_cost:
-		modulate.a = 0.5
-	elif player.money >= tower_cost:
-		modulate.a = 1
 
 
 func upgrade_stats():

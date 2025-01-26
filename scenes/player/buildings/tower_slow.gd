@@ -49,6 +49,7 @@ func _process(delta):
 func rota(delta):
 	rotation_degrees -= delta * rota_speed
 
+
 func attack():
 	if targets.size() > 0 and reloaded == true:
 		spawn_bubble_slow()
@@ -68,7 +69,8 @@ func spawn_bubble_slow():
 	var new_projectile = preload("res://scenes/player/buildings/bubble_slow.tscn").instantiate()
 	var next_target = targets[0]
 	new_projectile.target = next_target
-	add_child(new_projectile)
+	new_projectile.global_position = global_position
+	add_sibling(new_projectile)
 	reloaded = false
 
 

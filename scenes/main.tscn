@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dmpdwy7k7rrdo"]
+[gd_scene load_steps=21 format=3 uid="uid://dmpdwy7k7rrdo"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_44edq"]
 [ext_resource type="PackedScene" uid="uid://i1xh47ybyfws" path="res://scenes/player/buildings/tower_normal.tscn" id="1_fv00a"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/debug.gd" id="3_ex56j"]
 [ext_resource type="PackedScene" uid="uid://0acqg1cfepf1" path="res://scenes/player/buildings/building_tower_normal.tscn" id="3_gbodl"]
 [ext_resource type="PackedScene" uid="uid://5ej26fcwiwd8" path="res://scenes/player/buildings/building_tower_slow.tscn" id="6_gra6e"]
+[ext_resource type="PackedScene" uid="uid://bfwr5k0i8peh7" path="res://scenes/player/buildings/bubble_normal.tscn" id="7_etw12"]
 [ext_resource type="PackedScene" uid="uid://naxi80a8lev5" path="res://scenes/player/buildings/building_tower_heal.tscn" id="7_mvxj5"]
 [ext_resource type="PackedScene" uid="uid://cxjb0a1p5aobb" path="res://scenes/player/buildings/tower_slow.tscn" id="8_51my1"]
 [ext_resource type="Texture2D" uid="uid://dhhtaii1g6emi" path="res://assets/background/bg1.png" id="10_mvjsy"]
@@ -54,6 +55,8 @@ position = Vector2(65, -9)
 
 [node name="BuildingTowerSlow" parent="Player" instance=ExtResource("6_gra6e")]
 position = Vector2(1, 7)
+
+[node name="BubbleNormal" parent="Player" instance=ExtResource("7_etw12")]
 
 [node name="TowerSlow" parent="Player" instance=ExtResource("8_51my1")]
 visible = false
